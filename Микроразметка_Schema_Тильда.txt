@@ -55,8 +55,9 @@ Google и Яндексом формат: это отдельный <script>, к�
   "url": "https://gubernskaya-hotel.ru/",
   "logo": "https://static.tildacdn.com/tild3832-3666-4531-a138-623935396562/logo_gubernskiy.svg",
   "image": [
-    "ЗАПОЛНИТЬ_URL_ФОТО_1",
-    "ЗАПОЛНИТЬ_URL_ФОТО_2"
+    "https://static.tildacdn.com/tild3733-3831-4266-a231-633061356661/Gubernsk_239.jpg",
+    "https://static.tildacdn.com/tild3838-3035-4238-a537-386264663261/YAR_6665.jpg",
+    "https://static.tildacdn.com/tild6634-3963-4331-b966-646230656131/5P8A0990-2.jpg"
   ],
   "telephone": "+79617100111",
   "email": "info@gubernskaya-hotel.ru",
