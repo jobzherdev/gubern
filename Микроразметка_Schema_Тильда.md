@@ -42,12 +42,12 @@
   "alternateName": "Отель Губернский Шерегеш",
   "description": "Гостиничный комплекс «Губернский» 4★ в пгт Шерегеш — 200 м от подъёмника (сектор А, гора Зелёная). Гостиница на 20 номеров, апарт-отель, ресторан «Тепло», SPA-комплекс, русская баня с банным чаном.",
   "url": "https://gubernskaya-hotel.ru/",
-  "logo": "ЗАПОЛНИТЬ_URL_ЛОГОТИПА",
+  "logo": "https://static.tildacdn.com/tild3832-3666-4531-a138-623935396562/logo_gubernskiy.svg",
   "image": [
     "ЗАПОЛНИТЬ_URL_ФОТО_1",
     "ЗАПОЛНИТЬ_URL_ФОТО_2"
   ],
-  "telephone": "ЗАПОЛНИТЬ_ТЕЛЕФОН_ОСНОВНОЙ",
+  "telephone": "+79617100111",
   "email": "info@gubernskaya-hotel.ru",
   "priceRange": "ЗАПОЛНИТЬ_ЦЕНА_ОТ_ДО_₽",
   "currenciesAccepted": "RUB",
@@ -136,9 +136,9 @@
   "name": "Гостиничный комплекс «Губернский»",
   "legalName": "ООО «Губерния»",
   "url": "https://gubernskaya-hotel.ru/",
-  "logo": "ЗАПОЛНИТЬ_URL_ЛОГОТИПА",
+  "logo": "https://static.tildacdn.com/tild3832-3666-4531-a138-623935396562/logo_gubernskiy.svg",
   "email": "info@gubernskaya-hotel.ru",
-  "telephone": "ЗАПОЛНИТЬ_ТЕЛЕФОН_ОСНОВНОЙ",
+  "telephone": "+79617100111",
   "taxID": "4217147207",
   "identifier": [
     {
@@ -163,7 +163,7 @@
   "contactPoint": [
     {
       "@type": "ContactPoint",
-      "telephone": "ЗАПОЛНИТЬ_ТЕЛЕФОН_ОСНОВНОЙ",
+      "telephone": "+79617100111",
       "contactType": "reservations",
       "areaServed": "RU",
       "availableLanguage": "Russian"
