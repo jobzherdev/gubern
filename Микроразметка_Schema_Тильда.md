@@ -69,7 +69,7 @@
     "latitude": "ЗАПОЛНИТЬ_ШИРОТА",
     "longitude": "ЗАПОЛНИТЬ_ДОЛГОТА"
   },
-  "hasMap": "ЗАПОЛНИТЬ_URL_ЯНДЕКС_КАРТ",
+  "hasMap": "https://yandex.ru/maps/-/CTFIrUz4",
   "checkinTime": "14:00",
   "checkoutTime": "12:00",
   "numberOfRooms": "30",
@@ -94,9 +94,13 @@
     { "@type": "LocationFeatureSpecification", "name": "Детская площадка", "value": true }
   ],
   "sameAs": [
-    "ЗАПОЛНИТЬ_URL_ЯНДЕКС_БИЗНЕС",
-    "ЗАПОЛНИТЬ_URL_2ГИС",
-    "ЗАПОЛНИТЬ_URL_BOOKING_ИЛИ_СОЦСЕТИ"
+    "https://yandex.ru/maps/org/11274699328",
+    "https://go.2gis.com/ji8Af",
+    "https://vk.com/gubernskay",
+    "https://t.me/gubernskaia",
+    "https://max.ru/join/uRw5rxQ07Mmtpc7dlNNerDRowD4aH4i-rcrMEYH1voQ",
+    "https://dzen.ru/gubernskaia_sheregesh",
+    "https://rutube.ru/channel/69816886/"
   ],
   "parentOrganization": {
     "@id": "https://gubernskaya-hotel.ru/#organization"
@@ -170,9 +174,13 @@
     }
   ],
   "sameAs": [
-    "ЗАПОЛНИТЬ_URL_ЯНДЕКС_БИЗНЕС",
-    "ЗАПОЛНИТЬ_URL_2ГИС",
-    "ЗАПОЛНИТЬ_URL_BOOKING_ИЛИ_СОЦСЕТИ"
+    "https://yandex.ru/maps/org/11274699328",
+    "https://go.2gis.com/ji8Af",
+    "https://vk.com/gubernskay",
+    "https://t.me/gubernskaia",
+    "https://max.ru/join/uRw5rxQ07Mmtpc7dlNNerDRowD4aH4i-rcrMEYH1voQ",
+    "https://dzen.ru/gubernskaia_sheregesh",
+    "https://rutube.ru/channel/69816886/"
   ]
 }
 ```
