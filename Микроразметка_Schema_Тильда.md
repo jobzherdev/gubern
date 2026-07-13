@@ -66,8 +66,8 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "ЗАПОЛНИТЬ_ШИРОТА",
-    "longitude": "ЗАПОЛНИТЬ_ДОЛГОТА"
+    "latitude": "52.952566",
+    "longitude": "87.958578"
   },
   "hasMap": "https://yandex.ru/maps/-/CTFIrUz4",
   "checkinTime": "14:00",
