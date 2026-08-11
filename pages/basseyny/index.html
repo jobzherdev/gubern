@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+
+<!--metatextblock-->
+<title>Бассейн в Шерегеше | Крытый и открытый бассейны отеля «Губернский»</title>
+<meta name="description" content="Бассейны уют-отеля «Губернский» в Шерегеше: крытый бассейн и детский бассейн в СПА-комплексе, открытый подогреваемый бассейн на улице 18×6 м с противотоком и гидромассажем. Для проживающих гостей — бесплатно.">
+<meta name="keywords" content="бассейн шерегеш, отель с бассейном шерегеш, открытый бассейн шерегеш, крытый бассейн шерегеш, детский бассейн шерегеш, подогреваемый бассейн шерегеш, спа с бассейном шерегеш, гостиница с бассейном шерегеш, бассейн губернский">
+<meta property="og:url" content="https://gubernskaya-hotel.ru/basseyny/">
+<meta property="og:title" content="Бассейн в Шерегеше | Крытый и открытый бассейны отеля «Губернский»">
+<meta property="og:description" content="Крытый бассейн и детский бассейн в СПА, открытый бассейн 18×6 м с подогревом +28 °С. Для проживающих гостей — бесплатно.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://static.tildacdn.com/tild6637-6436-4465-a131-636366616562/Frame_132.jpg">
+<link rel="canonical" href="https://gubernskaya-hotel.ru/basseyny/">
+<!--/metatextblock-->
+
+<link rel="shortcut icon" href="https://static.tildacdn.com/tild3366-6430-4062-b331-613161363039/favicon.svg" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://static.tildacdn.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap&subset=cyrillic" rel="stylesheet">
+<link rel="preload" as="image" href="https://static.tildacdn.com/tild6637-6436-4465-a131-636366616562/Frame_132.jpg">
+
+<style>
+/* ==========================================================================
+   Бассейны — посадочная страница уют-отеля «Губернский»
+   Дизайн-токены сняты со страницы-образца /besedka-teplo/
+   ========================================================================== */
+:root{
+  --bg:#fffdfa;
+  --text:#3b3b3b;
+  --brown:#754632;
+  --gold:#d3c4a1;
+  --beige:#ebe2cc;
+  --white:#ffffff;
+  --muted:#8a8175;
+  --radius-l:30px;
+  --radius-m:20px;
+  --shadow:0 8px 30px rgba(59,59,59,.08);
+  --maxw:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Manrope',Arial,Helvetica,sans-serif;
+  font-weight:400;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- Шапка ---------- */
+.header{
+  position:sticky;top:0;z-index:60;
+  background:var(--white);
+  border-bottom:1px solid rgba(59,59,59,.08);
+}
+.header__in{
+  max-width:var(--maxw);margin:0 auto;padding:14px 20px;
+  display:flex;align-items:center;gap:20px;
+}
+.header__nav{display:flex;align-items:center;gap:24px;flex:1}
+.header__nav a{font-size:13px;text-transform:uppercase;letter-spacing:.04em;transition:color .2s}
+.header__nav a:hover{color:var(--brown)}
+.header__logo{flex:0 0 auto;margin:0 8px}
+.header__logo img{height:56px;width:auto}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 28px;border-radius:var(--radius-l);border:1px solid transparent;
+  font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;
+  cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;
+}
+.btn--primary{background:var(--brown);color:var(--white)}
+.btn--primary:hover{background:#5d3727}
+.btn--ghost{background:transparent;color:var(--text);border-color:var(--brown)}
+.btn--ghost:hover{background:var(--brown);color:var(--white)}
+.btn--gold{background:var(--gold);color:var(--text)}
+.btn--gold:hover{background:#c3b28b}
+.btn--sm{padding:11px 22px;font-size:12px}
+
+/* ---------- Хлебные крошки ---------- */
+.crumbs{padding:18px 0 0;font-size:12px;color:var(--muted)}
+.crumbs a:hover{color:var(--brown)}
+.crumbs span{margin:0 6px}
+
+/* ---------- Обложка ---------- */
+.hero{position:relative;margin-top:18px}
+.hero__media{
+  position:relative;border-radius:var(--radius-m);overflow:hidden;
+  min-height:420px;
+}
+.hero__media img{width:100%;height:100%;min-height:420px;object-fit:cover;object-position:50% 70%}
+.hero__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.12) 0%,rgba(0,0,0,.55) 100%);
+}
+.hero__content{
+  position:absolute;left:0;right:0;bottom:0;padding:40px 45px;color:var(--white);
+}
+.hero h1{
+  margin:0 0 14px;font-size:56px;line-height:1.1;font-weight:500;color:#fffdfa;
+  max-width:14em;
+}
+.hero__lead{margin:0;max-width:640px;font-size:18px;font-weight:300;color:#fffdfa}
+
+/* ---------- Быстрые факты ---------- */
+.facts{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
+  margin:45px 0 0;
+}
+.fact{
+  background:var(--beige);border-radius:var(--radius-m);padding:26px 24px;
+}
+.fact__num{font-size:34px;font-weight:500;line-height:1.1;color:var(--brown)}
+.fact__txt{margin-top:8px;font-size:14px;font-weight:300}
+
+/* ---------- Секции ---------- */
+.section{padding:90px 0 0}
+.section__head{max-width:760px;margin:0 0 36px}
+h2{margin:0 0 16px;font-size:34px;line-height:1.2;font-weight:500}
+h3{margin:0 0 12px;font-size:22px;line-height:1.3;font-weight:500}
+.lead{margin:0;font-size:16px;font-weight:300}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.split--rev .split__media{order:2}
+.split__media{border-radius:var(--radius-m);overflow:hidden;background:var(--beige)}
+.split__media img{width:100%;height:460px;object-fit:cover;transition:transform .5s}
+.split__media:hover img{transform:scale(1.03)}
+.split__body p{margin:0 0 18px;font-weight:300}
+
+.speclist{list-style:none;margin:0 0 26px;padding:0}
+.speclist li{
+  display:grid;grid-template-columns:14px minmax(150px,200px) 1fr;gap:0 14px;
+  align-items:start;padding:11px 0;border-bottom:1px solid rgba(59,59,59,.1);
+  font-size:15px;font-weight:300;
+}
+.speclist li::before{content:'⧽';color:var(--gold);font-size:14px;line-height:1.6}
+.speclist b{font-weight:500}
+@media (max-width:520px){
+  .speclist li{grid-template-columns:14px 1fr;gap:2px 12px}
+  .speclist li b,.speclist li span{grid-column:2}
+}
+
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:8px}
+.actions .phone{font-size:16px;font-weight:500;white-space:nowrap}
+.actions .phone small{display:block;font-size:11px;font-weight:300;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* ---------- Галерея ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.gallery figure{margin:0;border-radius:var(--radius-m);overflow:hidden;position:relative;cursor:zoom-in;background:var(--beige)}
+.gallery img{width:100%;height:260px;object-fit:cover;transition:transform .5s}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 18px;color:var(--white);
+  font-size:14px;font-weight:300;
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%);
+}
+
+/* ---------- Карточки уличных бассейнов ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.card{background:var(--white);border-radius:var(--radius-m);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card img{width:100%;height:220px;object-fit:cover}
+.card__body{padding:24px}
+.card__body h3{font-size:19px}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;font-weight:300}
+.card dt{color:var(--muted)}
+.card dd{margin:0;font-weight:500}
+
+/* ---------- Таблица ---------- */
+.table-scroll{overflow-x:auto;margin-top:36px;border-radius:var(--radius-m)}
+table{border-collapse:collapse;width:100%;min-width:720px;background:var(--white);font-size:15px}
+caption{text-align:left;padding:0 0 14px;font-size:14px;font-weight:300;color:var(--muted)}
+th,td{padding:16px 20px;text-align:left;border-bottom:1px solid rgba(59,59,59,.08);font-weight:300}
+thead th{background:var(--beige);font-weight:500;font-size:14px;text-transform:uppercase;letter-spacing:.04em;border-bottom:none}
+tbody th{font-weight:500}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
+
+/* ---------- Цены ---------- */
+.price{
+  margin-top:36px;background:var(--beige);border-radius:var(--radius-m);
+  padding:45px;display:grid;grid-template-columns:1fr auto;gap:30px 45px;align-items:start;
+}
+.price__head{grid-column:1 / -1}
+.price__head h2{margin-bottom:8px}
+.price__note{margin:0;font-size:14px;font-weight:300;color:var(--muted)}
+.price__rows{grid-column:1 / -1;display:flex;flex-direction:column;gap:0}
+.price__row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:20px 0;border-bottom:1px solid rgba(59,59,59,.15);
+}
+.price__row:last-child{border-bottom:none}
+.price__label{font-weight:500}
+.price__label small{display:block;font-size:13px;font-weight:300;color:var(--muted)}
+.price__value{font-size:22px;font-weight:500;white-space:nowrap;color:var(--brown)}
+.price__free{background:var(--white);border-radius:var(--radius-m);padding:24px 28px;grid-column:1 / -1}
+.price__free strong{color:var(--brown)}
+.price .actions{grid-column:1 / -1}
+
+/* ---------- Полезно знать ---------- */
+.notes{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:36px}
+.note{background:var(--white);border-radius:var(--radius-m);padding:30px;box-shadow:var(--shadow)}
+.note ul{margin:0;padding-left:18px}
+.note li{margin-bottom:10px;font-weight:300}
+.note li:last-child{margin-bottom:0}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:36px;border-top:1px solid rgba(59,59,59,.12)}
+.faq details{border-bottom:1px solid rgba(59,59,59,.12)}
+.faq summary{
+  list-style:none;cursor:pointer;padding:24px 40px 24px 0;position:relative;
+  font-size:18px;font-weight:500;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:'+';position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-size:24px;font-weight:300;color:var(--brown);transition:transform .25s;
+}
+.faq details[open] summary::after{content:'–'}
+.faq p{margin:0 0 24px;max-width:80ch;font-weight:300}
+
+/* ---------- Финальный CTA ---------- */
+.cta{
+  margin:90px 0 0;border-radius:var(--radius-m);overflow:hidden;position:relative;
+  min-height:360px;display:flex;align-items:center;
+}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta__overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.7) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.2) 100%)}
+.cta__body{position:relative;padding:50px 45px;color:var(--white);max-width:640px}
+.cta__body h2{color:#fffdfa}
+.cta__body p{font-weight:300;margin:0 0 26px}
+.cta .phone{color:#fffdfa;text-shadow:0 1px 6px rgba(0,0,0,.6)}
+.cta .phone small{color:rgba(255,253,250,.8)}
+
+/* ---------- Подвал ---------- */
+.footer{margin-top:90px;background:var(--bg);border-top:1px solid rgba(59,59,59,.12);padding:50px 0 40px}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer h4{margin:0 0 14px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;color:var(--muted)}
+.footer p,.footer li{font-size:14px;font-weight:300;margin:0 0 8px}
+.footer ul{list-style:none;margin:0;padding:0}
+.footer a:hover{color:var(--brown)}
+.footer__legal{margin-top:36px;padding-top:24px;border-top:1px solid rgba(59,59,59,.12);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* ---------- Лайтбокс ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;background:rgba(20,16,12,.92);
+  display:none;align-items:center;justify-content:center;padding:40px;cursor:zoom-out;
+}
+.lightbox.is-open{display:flex}
+.lightbox img{max-width:100%;max-height:90vh;border-radius:var(--radius-m);object-fit:contain}
+.lightbox__close{
+  position:absolute;top:20px;right:26px;color:#fff;font-size:34px;line-height:1;
+  background:none;border:none;cursor:pointer;
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width:1100px){
+  .header__nav a:nth-child(n+4){display:none}
+  .hero h1{font-size:44px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .split{grid-template-columns:1fr;gap:26px}
+  .split--rev .split__media{order:0}
+  .split__media img{height:320px}
+  .gallery,.cards,.notes{grid-template-columns:1fr 1fr}
+  .footer__grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .header__nav{display:none}
+  .header__in{justify-content:space-between}
+  .hero__media,.hero__media img{min-height:340px}
+  .hero__content{padding:26px 22px}
+  .hero h1{font-size:30px}
+  .hero__lead{font-size:15px}
+  .section{padding:60px 0 0}
+  h2{font-size:26px}
+  .facts,.gallery,.cards,.notes,.footer__grid{grid-template-columns:1fr}
+  .price{padding:28px 22px}
+  .price__row{flex-direction:column;gap:4px}
+  .price__value{font-size:19px}
+  .cta__body{padding:34px 22px}
+  .actions{flex-direction:column;align-items:flex-start}
+  .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ======================= ШАПКА ======================= -->
+<header class="header">
+  <div class="header__in">
+    <a class="btn btn--ghost btn--sm" href="/booking/">Забронировать</a>
+    <nav class="header__nav" aria-label="Основная навигация">
+      <a href="/gubernskaya/rooms/">Номера</a>
+      <a href="/spa/">СПА</a>
+      <a href="/banya/">Баня</a>
+      <a href="/#promotion">Акции</a>
+    </nav>
+    <a class="header__logo" href="/" aria-label="Уют-отель «Губернский» — на главную">
+      <img src="https://static.tildacdn.com/tild3832-3666-4531-a138-623935396562/logo_gubernskiy.svg" alt="Уют-отель «Губернский», Шерегеш" width="150" height="56">
+    </a>
+    <nav class="header__nav" aria-label="Дополнительная навигация">
+      <a href="/teplo/">Ресторан</a>
+      <a href="/besedka-teplo/">Беседка</a>
+      <a href="/children/">Дети</a>
+      <a href="/activity/summer/">Лето</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- ======================= ХЛЕБНЫЕ КРОШКИ ======================= -->
+  <nav class="crumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a><span>/</span><a href="/spa/">СПА</a><span>/</span>Бассейны
+  </nav>
+
+  <!-- ======================= ОБЛОЖКА ======================= -->
+  <section class="hero">
+    <div class="hero__media">
+      <img src="https://static.tildacdn.com/tild6637-6436-4465-a131-636366616562/Frame_132.jpg"
+           alt="Открытый подогреваемый бассейн уют-отеля «Губернский» в Шерегеше летом" width="1992" height="1584" fetchpriority="high">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1>Бассейны в отеле «Губернский»</h1>
+        <p class="hero__lead">Крытый и детский бассейны в СПА-комплексе работают круглый год, летом открывается уличный бассейн с подогревом воды до +28&nbsp;°С. Для гостей, проживающих в отеле, посещение СПА — бесплатно.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= БЫСТРЫЕ ФАКТЫ ======================= -->
+  <section class="facts" aria-label="Коротко о бассейнах">
+    <div class="fact">
+      <div class="fact__num">4</div>
+      <div class="fact__txt">бассейна на территории: два в СПА и два на улице (третий — детский)</div>
+    </div>
+    <div class="fact">
+      <div class="fact__num">+28…+30&nbsp;°С</div>
+      <div class="fact__txt">температура воды — в уличных бассейнах вода подогревается</div>
+    </div>
+    <div class="fact">
+      <div class="fact__num">9:00–23:00</div>
+      <div class="fact__txt">СПА-комплекс работает ежедневно</div>
+    </div>
+    <div class="fact">
+      <div class="fact__num">0&nbsp;₽</div>
+      <div class="fact__txt">для проживающих гостей отеля и апарт-отеля</div>
+    </div>
+  </section>
+
+  <!-- ======================= БАССЕЙН В СПА ======================= -->
+  <section class="section" id="spa-pool">
+    <div class="split">
+      <div class="split__media">
+        <img src="https://static.tildacdn.com/tild3165-3864-4865-a338-356266363462/456_3.jpg"
+             alt="Крытый бассейн в СПА-комплексе отеля «Губернский» в Шерегеше" loading="lazy" width="1448" height="1120">
+      </div>
+      <div class="split__body">
+        <h2>Бассейн в СПА-комплексе</h2>
+        <p>СПА-комплекс располагается на цокольном этаже гостиницы и работает круглый год — после катания, похода в горы или долгой дороги можно спуститься на лифте и сразу оказаться в тёплой воде. Взрослый бассейн — основа комплекса: рядом финская сауна, хаммам, тренажёрный зал, бильярд и лаунж-зона.</p>
+        <ul class="speclist">
+          <li><b>Расположение:</b><span>цокольный (0) этаж гостиницы «Губернская»</span></li>
+          <li><b>Режим работы:</b><span>ежедневно с 9:00 до 23:00</span></li>
+          <li><b>Для проживающих гостей:</b><span>бесплатно</span></li>
+          <li><b>В свободном доступе:</b><span>полотенце, простынь, тапочки, фен, травяной чай с угощением</span></li>
+          <li><b>Рядом в СПА:</b><span>финская сауна, хаммам, тренажёрный зал, бильярд, зоны отдыха, массаж по предварительной записи</span></li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn--primary" href="#prices">Узнать цены</a>
+          <a class="phone" href="tel:+79234707000">8 (923) 470-70-00<small>СПА-комплекс</small></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <figure><img src="https://static.tildacdn.com/tild6434-3432-4737-b735-613362393330/3.jpg" alt="Чаша крытого бассейна СПА-комплекса отеля «Губернский»" loading="lazy"><figcaption>Бассейн в СПА</figcaption></figure>
+      <figure><img src="https://static.tildacdn.com/tild6130-6234-4336-a666-333335336439/456_5.jpg" alt="Хаммам в СПА-комплексе отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Хаммам</figcaption></figure>
+      <figure><img src="https://static.tildacdn.com/tild6238-6139-4334-b038-643062636666/456_6.jpg" alt="Финская сауна в СПА-комплексе отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Финская сауна</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ======================= ДЕТСКИЙ БАССЕЙН В СПА ======================= -->
+  <section class="section" id="kids-pool">
+    <div class="split split--rev">
+      <div class="split__media">
+        <img src="https://static.tildacdn.com/tild6235-3131-4133-b939-613161323362/06.jpg"
+             alt="Детский бассейн в СПА-комплексе отеля «Губернский», глубина 30 см, вода +30 °С" loading="lazy" width="1680" height="1199">
+      </div>
+      <div class="split__body">
+        <h2>Детский бассейн в СПА</h2>
+        <p>Рядом со взрослым бассейном — небольшая тёплая чаша для малышей. Вода в ней прогревается до +30&nbsp;°С, а глубина всего 30&nbsp;см, поэтому в бассейне спокойно плещутся даже самые маленькие гости. Ребята постарше плавают во взрослом бассейне вместе с родителями.</p>
+        <ul class="speclist">
+          <li><b>Размер чаши:</b><span>2,8&nbsp;×&nbsp;1,2&nbsp;м</span></li>
+          <li><b>Глубина:</b><span>0,3&nbsp;м</span></li>
+          <li><b>Температура воды:</b><span>+30&nbsp;°С</span></li>
+          <li><b>Рядом:</b><span>душевая, зона отдыха и взрослый бассейн — родители всегда рядом с ребёнком</span></li>
+          <li><b>Для детей до 5 лет:</b><span>проживание в отеле бесплатное</span></li>
+        </ul>
+        <div class="actions">
+          <a class="btn btn--ghost" href="/children/">Отдых с детьми</a>
+          <a class="phone" href="tel:+79617100111">8-961-710-0111<small>Бронирование</small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ОТКРЫТЫЙ БАССЕЙН ======================= -->
+  <section class="section" id="outdoor-pool">
+    <div class="section__head">
+      <h2>Открытый бассейн на улице</h2>
+      <p class="lead">Летом на территории работает открытая зона отдыха с подогреваемыми бассейнами, шезлонгами и пляжными зонтами. Пляжные полотенца выдаём — с собой достаточно купальника. Большой бассейн у гостиницы оборудован противотоком и гидромассажем, а для детей рядом с апарт-отелем есть отдельная круглая чаша с горкой.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <img src="https://static.tildacdn.com/tild6637-6436-4465-a131-636366616562/Frame_132.jpg" alt="Большой открытый бассейн 18×6 м у гостиницы «Губернская» в Шерегеше" loading="lazy">
+        <div class="card__body">
+          <h3>Большой бассейн у гостиницы</h3>
+          <dl>
+            <dt>Размер</dt><dd>18&nbsp;×&nbsp;6&nbsp;м</dd>
+            <dt>Глубина</dt><dd>1,4–1,5&nbsp;м</dd>
+            <dt>Вода</dt><dd>+28&nbsp;°С</dd>
+            <dt>Особенности</dt><dd>противоток, гидромассаж</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://static.tildacdn.com/tild3333-3831-4966-a639-656461306137/4.jpg" alt="Открытый бассейн 12×3,4 м у апарт-отеля «Губернский» в Шерегеше" loading="lazy">
+        <div class="card__body">
+          <h3>Бассейн у апарт-отеля</h3>
+          <dl>
+            <dt>Размер</dt><dd>12&nbsp;×&nbsp;3,4&nbsp;м</dd>
+            <dt>Глубина</dt><dd>1,45&nbsp;м</dd>
+            <dt>Вода</dt><dd>+28&nbsp;°С</dd>
+            <dt>Рядом</dt><dd>шезлонги, зонты, газон</dd>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img src="https://static.tildacdn.com/tild3162-3832-4635-a664-636461396330/6.jpg" alt="Детский уличный бассейн с горкой в отеле «Губернский», вода +30 °С" loading="lazy">
+        <div class="card__body">
+          <h3>Детский бассейн на улице</h3>
+          <dl>
+            <dt>Диаметр</dt><dd>2,9&nbsp;м</dd>
+            <dt>Глубина</dt><dd>0,6&nbsp;м</dd>
+            <dt>Вода</dt><dd>+30&nbsp;°С</dd>
+            <dt>Рядом</dt><dd>горка, детская площадка</dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+
+    <div class="gallery">
+      <figure><img src="https://static.tildacdn.com/tild3331-3731-4132-b564-316335333061/1.jpg" alt="Бассейны и зона отдыха с шезлонгами на территории отеля «Губернский» с высоты" loading="lazy"><figcaption>Летняя зона отдыха</figcaption></figure>
+      <figure><img src="https://static.tildacdn.com/tild6430-6437-4335-a130-356434303563/2.jpg" alt="Дети купаются в тёплом уличном бассейне отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Детский бассейн, +30&nbsp;°С</figcaption></figure>
+      <figure><img src="https://static.tildacdn.com/tild3137-3363-4063-a534-363439366138/Frame_131.jpg" alt="Семейный отдых у открытого бассейна отеля «Губернский» летом" loading="lazy"><figcaption>Отдых всей семьёй</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ======================= СВОДНАЯ ТАБЛИЦА ======================= -->
+  <section class="section" id="specs">
+    <div class="section__head">
+      <h2>Характеристики бассейнов</h2>
+      <p class="lead">Все бассейны уют-отеля «Губернский», Шерегеш.</p>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Бассейн</th>
+            <th scope="col">Где</th>
+            <th scope="col">Размер</th>
+            <th scope="col">Глубина</th>
+            <th scope="col">Вода</th>
+            <th scope="col">Сезон</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Взрослый бассейн</th>
+            <td>СПА-комплекс, 0 этаж (крытый)</td>
+            <td>—<!-- уточнить габариты чаши у отеля --></td>
+            <td>—<!-- уточнить глубину у отеля --></td>
+            <td>с подогревом</td>
+            <td>круглый год</td>
+          </tr>
+          <tr>
+            <th scope="row">Детский бассейн</th>
+            <td>СПА-комплекс, 0 этаж</td>
+            <td>2,8 × 1,2 м</td>
+            <td>0,3 м</td>
+            <td>+30 °С</td>
+            <td>круглый год</td>
+          </tr>
+          <tr>
+            <th scope="row">Большой открытый бассейн</th>
+            <td>улица, у гостиницы</td>
+            <td>18 × 6 м</td>
+            <td>1,4–1,5 м</td>
+            <td>+28 °С</td>
+            <td>лето</td>
+          </tr>
+          <tr>
+            <th scope="row">Открытый бассейн</th>
+            <td>улица, у апарт-отеля</td>
+            <td>12 × 3,4 м</td>
+            <td>1,45 м</td>
+            <td>+28 °С</td>
+            <td>лето</td>
+          </tr>
+          <tr>
+            <th scope="row">Детский открытый бассейн</th>
+            <td>улица, у апарт-отеля</td>
+            <td>диаметр 2,9 м</td>
+            <td>0,6 м</td>
+            <td>+30 °С</td>
+            <td>лето</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ======================= ЦЕНЫ ======================= -->
+  <section class="section" id="prices">
+    <div class="price">
+      <div class="price__head">
+        <h2>Стоимость посещения</h2>
+        <p class="price__note">Цены указаны за одного человека и включают посещение всего СПА-комплекса: бассейн, детский бассейн, финская сауна, хаммам, тренажёрный зал и зоны отдыха.</p>
+      </div>
+
+      <div class="price__free">
+        Для гостей, проживающих в гостинице «Губернская» и апарт-отеле «Губернский», посещение СПА-комплекса и бассейнов — <strong>бесплатно</strong>, ежедневно с 9:00 до 23:00. Летом уличные бассейны и зона отдыха с шезлонгами также доступны проживающим гостям без доплаты.
+      </div>
+
+      <div class="price__rows">
+        <div class="price__row">
+          <div class="price__label">Посещение СПА для не проживающих гостей<small>c 9:00 до 17:00</small></div>
+          <div class="price__value">3800 ₽ / 1 чел.</div>
+        </div>
+        <div class="price__row">
+          <div class="price__label">Посещение СПА для не проживающих гостей<small>2 часа</small></div>
+          <div class="price__value">3500 ₽ / 1 чел.</div>
+        </div>
+        <div class="price__row">
+          <div class="price__label">Посещение СПА для не проживающих гостей<small>с 9:00 до 23:00</small></div>
+          <div class="price__value">4500 ₽ / 1 чел.</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn--gold" href="/payment/">Оплатить онлайн</a>
+        <a class="btn btn--ghost" href="/price/">Полный прайс-лист</a>
+        <a class="phone" href="tel:+79234707000">8 (923) 470-70-00<small>Запись в СПА</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= ПОЛЕЗНО ЗНАТЬ ======================= -->
+  <section class="section" id="info">
+    <div class="section__head">
+      <h2>Полезно знать</h2>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <h3>Что взять с собой</h3>
+        <ul>
+          <li>Купальник или плавки — всё остальное выдаём на месте.</li>
+          <li>Полотенце, простынь, тапочки и фен в СПА — в свободном доступе.</li>
+          <li>Для уличных бассейнов летом выдаём пляжные полотенца.</li>
+          <li>Для малышей — привычные надувные круги и нарукавники (в бассейнах можно).</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Дети в бассейнах</h3>
+        <ul>
+          <li>Дети до 5 лет проживают в отеле бесплатно.</li>
+          <li>Для малышей — отдельные детские бассейны в СПА и на улице, вода +30&nbsp;°С.</li>
+          <li>Дети находятся в бассейнах только в сопровождении взрослых.</li>
+          <li>Рядом с уличным детским бассейном — горка, детская площадка и батут.</li>
+        </ul>
+      </div>
+    </div>
+    <!--
+      ⚠️ УТОЧНИТЬ У ОТЕЛЯ ПЕРЕД ПУБЛИКАЦИЕЙ:
+      1) Точные даты работы уличных бассейнов (месяцы летнего сезона).
+      2) Требования к посещению: резиновая шапочка, сменная обувь, возрастные ограничения.
+      3) Нужна ли предварительная запись в СПА для не проживающих гостей в высокий сезон.
+      4) Действует ли детский тариф на посещение СПА для не проживающих гостей.
+      Блоки выше содержат только подтверждённую информацию с текущего сайта (/spa/, /children/, /activity/summer/).
+    -->
+  </section>
+
+  <!-- ======================= FAQ ======================= -->
+  <section class="section" id="faq">
+    <div class="section__head">
+      <h2>Частые вопросы</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Есть ли в отеле «Губернский» бассейн?</summary>
+        <p>Да. В СПА-комплексе на цокольном этаже гостиницы работают взрослый и детский бассейны — круглый год, ежедневно с 9:00 до 23:00. Летом дополнительно открываются уличные бассейны: большой 18&nbsp;×&nbsp;6&nbsp;м у гостиницы, бассейн 12&nbsp;×&nbsp;3,4&nbsp;м у апарт-отеля и детская чаша диаметром 2,9&nbsp;м.</p>
+      </details>
+      <details>
+        <summary>Бассейн входит в стоимость проживания?</summary>
+        <p>Да, для гостей, проживающих в гостинице «Губернская» и апарт-отеле «Губернский», посещение СПА-комплекса и бассейнов бесплатное — ежедневно с 9:00 до 23:00.</p>
+      </details>
+      <details>
+        <summary>Можно ли прийти в бассейн, если я не живу в отеле?</summary>
+        <p>Да. Посещение СПА для не проживающих гостей: 3800&nbsp;₽ с человека с 9:00 до 17:00, 3500&nbsp;₽ за 2 часа и 4500&nbsp;₽ на весь день с 9:00 до 23:00. В летний период СПА доступен всем гостям курорта. Записаться можно по телефону 8 (923) 470-70-00.</p>
+      </details>
+      <details>
+        <summary>Открытый бассейн с подогревом?</summary>
+        <p>Да, вода в уличных бассейнах подогревается до +28&nbsp;°С, в детском — до +30&nbsp;°С. Большой бассейн у гостиницы оборудован противотоком и гидромассажем, вокруг — шезлонги и пляжные зонты.</p>
+      </details>
+      <details>
+        <summary>Есть ли бассейн для маленьких детей?</summary>
+        <p>Да, сразу два. В СПА — тёплая чаша 2,8&nbsp;×&nbsp;1,2&nbsp;м глубиной 30&nbsp;см с водой +30&nbsp;°С. Летом на улице работает круглый детский бассейн диаметром 2,9&nbsp;м, глубиной 0,6&nbsp;м, с горкой и детской площадкой рядом.</p>
+      </details>
+      <details>
+        <summary>Что взять с собой в бассейн?</summary>
+        <p>Достаточно купальника. Полотенце, простынь, тапочки и фен в СПА выдаются в свободном доступе, летом у уличных бассейнов гостям выдают пляжные полотенца.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ======================= CTA ======================= -->
+  <section class="cta">
+    <img src="https://static.tildacdn.com/tild3333-3831-4966-a639-656461306137/4.jpg" alt="Отдых у бассейна в отеле «Губернский» в Шерегеше" loading="lazy">
+    <div class="cta__overlay"></div>
+    <div class="cta__body">
+      <h2>Забронируйте номер с бассейном в Шерегеше</h2>
+      <p>Отель «Губернский» находится прямо у подъёмника на горе Зелёная. Бассейны, сауна и хаммам — для наших гостей бесплатно, круглый год.</p>
+      <div class="actions">
+        <a class="btn btn--gold" href="/booking/">Забронировать номер</a>
+        <a class="phone" href="tel:+79617100111">8-961-710-0111<small>Отдел бронирования</small></a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<!-- ======================= ПОДВАЛ ======================= -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <h4>Уют-отель «Губернский»</h4>
+        <p>Кемеровская область, горнолыжный курорт Шерегеш,<br>гора Зелёная, ул. Снежная, 27</p>
+        <p><a href="mailto:info@gubernskaya-hotel.ru">info@gubernskaya-hotel.ru</a></p>
+        <p><a href="/contacts/">Как нас найти</a></p>
+      </div>
+      <div>
+        <h4>Телефоны</h4>
+        <ul>
+          <li><a href="tel:+79617100111">8-961-710-0111</a> — бронирование</li>
+          <li><a href="tel:+79234707000">8-923-470-7000</a> — СПА, баня, банный чан</li>
+          <li><a href="tel:+79609352828">8-960-935-2828</a> — ресторан «Тепло»</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="/spa/">СПА-комплекс</a></li>
+          <li><a href="/banya/">Баня и банный чан</a></li>
+          <li><a href="/children/">Отдых с детьми</a></li>
+          <li><a href="/activity/summer/">Лето в Шерегеше</a></li>
+          <li><a href="/price/">Прайс-лист</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>Официальный сайт ООО «Губерния». ИНН 4217147207</span>
+      <span>
+        <a href="/policies/">Правила проживания</a> ·
+        <a href="/public-offer/">Публичная оферта</a> ·
+        <a href="/privacy-policy/">Политика конфиденциальности</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ======================= ЛАЙТБОКС ======================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
+  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
+</div>
+
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var boxImg = box.querySelector('img');
+  var BLANK = boxImg.getAttribute('src');
+  var lastFocus = null;
+
+  document.querySelectorAll('.gallery figure img').forEach(function(img){
+    img.parentElement.setAttribute('tabindex','0');
+    img.parentElement.setAttribute('role','button');
+    function open(){
+      lastFocus = document.activeElement;
+      boxImg.src = img.currentSrc || img.src;
+      boxImg.alt = img.alt;
+      box.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lightbox__close').focus();
+    }
+    img.parentElement.addEventListener('click', open);
+    img.parentElement.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    });
+  });
+
+  function close(){
+    box.classList.remove('is-open');
+    boxImg.src = BLANK;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && box.classList.contains('is-open')) close();
+  });
+})();
+</script>
+
+<!-- ======================= МИКРОРАЗМЕТКА ======================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://gubernskaya-hotel.ru/"},
+        {"@type": "ListItem", "position": 2, "name": "СПА", "item": "https://gubernskaya-hotel.ru/spa/"},
+        {"@type": "ListItem", "position": 3, "name": "Бассейны", "item": "https://gubernskaya-hotel.ru/basseyny/"}
+      ]
+    },
+    {
+      "@type": "Hotel",
+      "@id": "https://gubernskaya-hotel.ru/#hotel",
+      "name": "Уют-отель «Губернский»",
+      "url": "https://gubernskaya-hotel.ru/",
+      "telephone": "+7-961-710-0111",
+      "email": "info@gubernskaya-hotel.ru",
+      "starRating": {"@type": "Rating", "ratingValue": "4"},
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Снежная, 27",
+        "addressLocality": "пгт. Шерегеш",
+        "addressRegion": "Кемеровская область",
+        "postalCode": "652971",
+        "addressCountry": "RU"
+      },
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Крытый бассейн в СПА-комплексе", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Детский бассейн в СПА-комплексе", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Открытый бассейн с подогревом", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Детский открытый бассейн", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Финская сауна", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Хаммам", "value": true},
+        {"@type": "LocationFeatureSpecification", "name": "Тренажёрный зал", "value": true}
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://gubernskaya-hotel.ru/basseyny/",
+      "url": "https://gubernskaya-hotel.ru/basseyny/",
+      "name": "Бассейн в Шерегеше | Крытый и открытый бассейны отеля «Губернский»",
+      "description": "Бассейны уют-отеля «Губернский» в Шерегеше: крытый и детский бассейны в СПА-комплексе, открытый подогреваемый бассейн 18×6 м с противотоком и гидромассажем.",
+      "inLanguage": "ru-RU",
+      "about": {"@id": "https://gubernskaya-hotel.ru/#hotel"},
+      "primaryImageOfPage": "https://static.tildacdn.com/tild6637-6436-4465-a131-636366616562/Frame_132.jpg"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Есть ли в отеле «Губернский» бассейн?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да. В СПА-комплексе на цокольном этаже гостиницы работают взрослый и детский бассейны — круглый год, ежедневно с 9:00 до 23:00. Летом дополнительно открываются уличные бассейны: большой 18 × 6 м у гостиницы, бассейн 12 × 3,4 м у апарт-отеля и детская чаша диаметром 2,9 м."}
+        },
+        {
+          "@type": "Question",
+          "name": "Бассейн входит в стоимость проживания?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да, для гостей, проживающих в гостинице «Губернская» и апарт-отеле «Губернский», посещение СПА-комплекса и бассейнов бесплатное — ежедневно с 9:00 до 23:00."}
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли прийти в бассейн, если я не живу в отеле?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да. Посещение СПА для не проживающих гостей: 3800 ₽ с человека с 9:00 до 17:00, 3500 ₽ за 2 часа и 4500 ₽ на весь день с 9:00 до 23:00. В летний период СПА доступен всем гостям курорта. Записаться можно по телефону 8 (923) 470-70-00."}
+        },
+        {
+          "@type": "Question",
+          "name": "Открытый бассейн с подогревом?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да, вода в уличных бассейнах подогревается до +28 °С, в детском — до +30 °С. Большой бассейн у гостиницы оборудован противотоком и гидромассажем, вокруг — шезлонги и пляжные зонты."}
+        },
+        {
+          "@type": "Question",
+          "name": "Есть ли бассейн для маленьких детей?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Да, сразу два. В СПА — тёплая чаша 2,8 × 1,2 м глубиной 30 см с водой +30 °С. Летом на улице работает круглый детский бассейн диаметром 2,9 м, глубиной 0,6 м, с горкой и детской площадкой рядом."}
+        },
+        {
+          "@type": "Question",
+          "name": "Что взять с собой в бассейн?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Достаточно купальника. Полотенце, простынь, тапочки и фен в СПА выдаются в свободном доступе, летом у уличных бассейнов гостям выдают пляжные полотенца."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
+</html>
