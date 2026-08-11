@@ -164,6 +164,8 @@ h3{margin:0 0 12px;font-size:22px;line-height:1.3;font-weight:500}
   font-size:14px;font-weight:300;
   background:linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,.6) 100%);
 }
+.gallery--single{grid-template-columns:1fr}
+.gallery--single img{height:460px}
 
 /* ---------- Карточки уличных бассейнов ---------- */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
@@ -240,14 +242,84 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
 .cta .phone{color:#fffdfa;text-shadow:0 1px 6px rgba(0,0,0,.6)}
 .cta .phone small{color:rgba(255,253,250,.8)}
 
+/* ---------- Карта территории ---------- */
+.map{padding:105px 0 0}
+.map__head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:26px}
+.map__head h2{margin:0;font-size:52px;line-height:1.05;font-weight:300;letter-spacing:-2px}
+.mapswitch{display:flex;gap:14px;flex:0 0 auto}
+.mapswitch__btn{
+  display:flex;flex-direction:column;align-items:center;gap:7px;
+  background:none;border:none;padding:0;cursor:pointer;font:inherit;color:var(--text);
+  font-size:13px;font-weight:400;
+}
+.mapswitch__btn i{
+  width:45px;height:45px;border-radius:50%;background:#f2e6cc;color:var(--brown);
+  display:grid;place-items:center;transition:background-color .25s,color .25s;
+}
+.mapswitch__btn[aria-pressed="true"] i{background:var(--brown);color:#fffdfa}
+.mapswitch__btn:hover i{background:#e2d2ab}
+.mapswitch__btn[aria-pressed="true"]:hover i{background:#5d3727}
+.map__stage{
+  position:relative;border-radius:var(--radius-m);overflow:hidden;
+  aspect-ratio:1110 / 694;background:var(--beige);
+  container-type:inline-size;
+}
+.map__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.map__img[hidden]{display:none}
+.map__layer{position:absolute;inset:0}
+.map__layer[hidden]{display:none}
+.map__point{
+  position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;
+  border-radius:5px;color:transparent;background:transparent;
+  font-size:12px;font-size:1.08cqw;font-weight:700;line-height:1.1;letter-spacing:-.5px;
+  transition:background-color .2s,color .2s;
+}
+.map__point:hover,.map__point:focus-visible{background:var(--brown);color:#fffdfa;outline:none}
+.map__hint{margin-top:14px;font-size:13px;font-weight:300;color:var(--muted)}
+
 /* ---------- Подвал ---------- */
-.footer{margin-top:90px;background:var(--bg);border-top:1px solid rgba(59,59,59,.12);padding:50px 0 40px}
-.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
-.footer h4{margin:0 0 14px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;color:var(--muted)}
-.footer p,.footer li{font-size:14px;font-weight:300;margin:0 0 8px}
-.footer ul{list-style:none;margin:0;padding:0}
-.footer a:hover{color:var(--brown)}
-.footer__legal{margin-top:36px;padding-top:24px;border-top:1px solid rgba(59,59,59,.12);font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+.footer{position:relative;margin-top:105px;color:#fff;overflow:hidden}
+.footer__bg{position:absolute;inset:0}
+.footer__bg img{width:100%;height:100%;object-fit:cover}
+.footer__bg::after{content:'';position:absolute;inset:0;background:rgba(28,22,17,.62)}
+.footer__in{position:relative;padding:60px 20px 40px}
+.footer a{transition:opacity .2s}
+.footer a:hover{opacity:.7}
+.footer__top{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.footer__title{margin:0;font-size:50px;line-height:1.05;font-weight:300;letter-spacing:-1.2px;color:#fff}
+.btn--outline-white{border-color:#fff;color:#fff;font-size:10px;padding:10px 24px}
+.btn--outline-white:hover{background:#fff;color:var(--text);opacity:1}
+.footer__rule{border:none;height:1px;background:rgba(255,255,255,.55);margin:22px 0 0}
+.footer__rule--short{max-width:487px;margin-left:0}
+.footer__contacts{
+  display:grid;grid-template-columns:repeat(5,auto);gap:24px 40px;
+  justify-content:space-between;margin-top:40px;font-size:15px;font-weight:300;
+}
+.footer__contacts b{display:block;font-weight:400;font-size:16px}
+.footer__contacts span{display:block;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:4px}
+.footer__holding{
+  display:flex;align-items:center;justify-content:flex-end;gap:16px;
+  margin:36px 0 0;font-size:13px;font-weight:300;text-align:right;color:rgba(255,255,255,.85);
+}
+.footer__holding img{width:47px;height:auto}
+.footer__brandline{
+  display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  margin-top:32px;
+}
+.footer__logo img{width:234px;height:auto}
+.footer__socials{display:flex;align-items:center;gap:14px}
+.footer__socials img{width:36px;height:36px;object-fit:contain}
+.footer__ratings{display:flex;align-items:center;gap:16px;font-size:12px;font-weight:300}
+.footer__ratings img{width:71px;height:auto}
+.footer__legal{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;
+  margin-top:36px;font-size:12px;font-weight:300;color:rgba(255,255,255,.8);
+}
+.footer__legal-links{display:flex;flex-wrap:wrap;gap:10px 26px;margin-left:auto}
+.footer__up{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.6);
+  display:grid;place-items:center;
+}
 
 /* ---------- Лайтбокс ---------- */
 .lightbox{
@@ -272,7 +344,12 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
   .split--rev .split__media{order:0}
   .split__media img{height:320px}
   .gallery,.cards,.notes{grid-template-columns:1fr 1fr}
-  .footer__grid{grid-template-columns:1fr 1fr}
+  .gallery--single{grid-template-columns:1fr}
+  .gallery--single img{height:340px}
+  .map__head h2{font-size:38px;letter-spacing:-1px}
+  .footer__contacts{grid-template-columns:repeat(2,1fr);justify-content:start}
+  .footer__title{font-size:36px}
+  .footer__holding{justify-content:flex-start;text-align:left}
 }
 @media (max-width:640px){
   .header__nav{display:none}
@@ -290,6 +367,17 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
   .cta__body{padding:34px 22px}
   .actions{flex-direction:column;align-items:flex-start}
   .btn{width:100%}
+  .map{padding:60px 0 0}
+  .map__head{flex-direction:column;align-items:flex-start;gap:18px}
+  .map__head h2{font-size:28px;letter-spacing:-.5px}
+  .footer{margin-top:60px}
+  .footer__in{padding:40px 20px 32px}
+  .footer__title{font-size:30px}
+  .footer__top{flex-direction:column;align-items:flex-start;gap:18px}
+  .footer__contacts{grid-template-columns:1fr;gap:18px;margin-top:28px}
+  .footer__brandline{gap:22px}
+  .footer__legal-links{margin-left:0}
+  .btn--outline-white{width:auto}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -300,7 +388,7 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
 <body>
 
 <!-- ======================= ШАПКА ======================= -->
-<header class="header">
+<header class="header" id="start">
   <div class="header__in">
     <a class="btn btn--ghost btn--sm" href="/booking/">Забронировать</a>
     <nav class="header__nav" aria-label="Основная навигация">
@@ -386,10 +474,8 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
       </div>
     </div>
 
-    <div class="gallery">
+    <div class="gallery gallery--single">
       <figure><img src="https://static.tildacdn.com/tild6434-3432-4737-b735-613362393330/3.jpg" alt="Чаша крытого бассейна СПА-комплекса отеля «Губернский»" loading="lazy"><figcaption>Бассейн в СПА</figcaption></figure>
-      <figure><img src="https://static.tildacdn.com/tild6130-6234-4336-a666-333335336439/456_5.jpg" alt="Хаммам в СПА-комплексе отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Хаммам</figcaption></figure>
-      <figure><img src="https://static.tildacdn.com/tild6238-6139-4334-b038-643062636666/456_6.jpg" alt="Финская сауна в СПА-комплексе отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Финская сауна</figcaption></figure>
     </div>
   </section>
 
@@ -464,10 +550,8 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
       </article>
     </div>
 
-    <div class="gallery">
+    <div class="gallery gallery--single">
       <figure><img src="https://static.tildacdn.com/tild3331-3731-4132-b564-316335333061/1.jpg" alt="Бассейны и зона отдыха с шезлонгами на территории отеля «Губернский» с высоты" loading="lazy"><figcaption>Летняя зона отдыха</figcaption></figure>
-      <figure><img src="https://static.tildacdn.com/tild6430-6437-4335-a130-356434303563/2.jpg" alt="Дети купаются в тёплом уличном бассейне отеля «Губернский» в Шерегеше" loading="lazy"><figcaption>Детский бассейн, +30&nbsp;°С</figcaption></figure>
-      <figure><img src="https://static.tildacdn.com/tild3137-3363-4063-a534-363439366138/Frame_131.jpg" alt="Семейный отдых у открытого бассейна отеля «Губернский» летом" loading="lazy"><figcaption>Отдых всей семьёй</figcaption></figure>
     </div>
   </section>
 
@@ -652,46 +736,117 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
     </div>
   </section>
 
+  <!-- ======================= КАРТА ТЕРРИТОРИИ ======================= -->
+  <section class="map" id="map" aria-labelledby="map-title">
+    <div class="map__head">
+      <h2 id="map-title">Карта уют-отеля «Губернский»</h2>
+      <div class="mapswitch" role="group" aria-label="Сезон на карте территории">
+        <button type="button" class="mapswitch__btn" data-season="summer" aria-pressed="true">
+          <i aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg></i>
+          Лето
+        </button>
+        <button type="button" class="mapswitch__btn" data-season="winter" aria-pressed="false">
+          <i aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2.5v19M3.8 7.2l16.4 9.6M20.2 7.2L3.8 16.8M12 6.6l2.6-2.2M12 6.6L9.4 4.4M12 17.4l2.6 2.2M12 17.4l-2.6 2.2M7.3 9.4 4 8.8M7.3 14.6 4 15.2M16.7 9.4l3.3-.6M16.7 14.6l3.3.6"/></svg></i>
+          Зима
+        </button>
+      </div>
+    </div>
+
+    <div class="map__stage">
+      <img class="map__img" id="map-summer" src="https://static.tildacdn.com/tild3130-6262-4462-b363-616633393332/map-2.jpg"
+           alt="Карта территории уют-отеля «Губернский» летом: бассейны, СПА, баня, беседка, апарт-отель" loading="lazy" width="1680" height="1053">
+      <img class="map__img" id="map-winter" src="https://static.tildacdn.com/tild6630-6231-4937-b534-303636663837/winter.jpg"
+           alt="Карта территории уют-отеля «Губернский» зимой" loading="lazy" width="1680" height="1053" hidden>
+
+      <!-- Кликабельные метки лежат поверх подписей, отрисованных на самой карте -->
+      <div class="map__layer" data-layer="summer">
+        <a class="map__point" href="#outdoor-pool"   style="left:12.92%;top:32.29%;width:6.31%;height:3.51%">Бассейн</a>
+        <a class="map__point" href="#outdoor-pool"   style="left:77.56%;top:24.22%;width:5.77%;height:3.51%">Бассейн</a>
+        <a class="map__point" href="#outdoor-pool"   style="left:83.81%;top:28.68%;width:10.48%;height:3.80%">Детский бассейн</a>
+        <a class="map__point" href="/spa/"           style="left:21.49%;top:60.40%;width:8.99%;height:5.41%">СПА-комплекс, 0 этаж</a>
+        <a class="map__point" href="/besedka-teplo/" style="left:43.24%;top:6.92%;width:10.63%;height:3.75%">Беседка «Тепло»</a>
+        <a class="map__point" href="/besedka-teplo/" style="left:32.92%;top:12.92%;width:10.83%;height:3.61%">Мангальная зона</a>
+        <a class="map__point" href="/apart-hotel/"   style="left:67.74%;top:11.97%;width:8.81%;height:4.37%">Апарт-отель «Губернский»</a>
+        <a class="map__point" href="/gubernskaya/"   style="left:30.99%;top:49.42%;width:16.67%;height:5.76%">Гостиница «Губернская», Ресторан «Тепло», 1 этаж</a>
+        <a class="map__point" href="/banya/"         style="left:7.92%;top:47.20%;width:11.90%;height:3.51%">Баня на дровах</a>
+        <a class="map__point" href="/banya/"         style="left:11.85%;top:71.32%;width:9.64%;height:3.51%">Банный чан</a>
+      </div>
+      <div class="map__layer" data-layer="winter" hidden>
+        <a class="map__point" href="/spa/"           style="left:21.37%;top:60.49%;width:8.27%;height:5.03%">СПА-комплекс, 0 этаж</a>
+        <a class="map__point" href="/besedka-teplo/" style="left:41.49%;top:11.02%;width:9.76%;height:3.42%">Беседка «Тепло»</a>
+        <a class="map__point" href="/besedka-teplo/" style="left:31.90%;top:16.52%;width:10.06%;height:3.32%">Мангальная зона</a>
+        <a class="map__point" href="/apart-hotel/"   style="left:64.23%;top:15.67%;width:8.15%;height:3.99%">Апарт-отель «Губернский»</a>
+        <a class="map__point" href="/gubernskaya/"   style="left:30.18%;top:50.43%;width:15.65%;height:5.41%">Гостиница «Губернская», Ресторан «Тепло», 1 этаж</a>
+        <a class="map__point" href="/banya/"         style="left:8.39%;top:48.24%;width:11.43%;height:3.42%">Баня на дровах</a>
+        <a class="map__point" href="/banya/"         style="left:12.38%;top:70.18%;width:8.93%;height:4.27%">Банный чан</a>
+      </div>
+    </div>
+    <p class="map__hint">Бассейны отмечены на карте: открытый — у гостиницы и у апарт-отеля, крытый и детский — в СПА-комплексе на цокольном этаже.</p>
+  </section>
+
 </div>
 </main>
 
 <!-- ======================= ПОДВАЛ ======================= -->
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer__grid">
-      <div>
-        <h4>Уют-отель «Губернский»</h4>
-        <p>Кемеровская область, горнолыжный курорт Шерегеш,<br>гора Зелёная, ул. Снежная, 27</p>
-        <p><a href="mailto:info@gubernskaya-hotel.ru">info@gubernskaya-hotel.ru</a></p>
-        <p><a href="/contacts/">Как нас найти</a></p>
+  <div class="footer__bg">
+    <img src="https://static.tildacdn.com/tild6334-6461-4234-b164-653733616232/bg_footer.jpg" alt="" loading="lazy" width="1680" height="905">
+  </div>
+  <div class="wrap footer__in">
+
+    <div class="footer__top">
+      <h2 class="footer__title">Как нас найти</h2>
+      <a class="btn btn--outline-white" href="https://yandex.ru/maps/-/CPgfBIot" target="_blank" rel="noopener">посмотреть на карте</a>
+    </div>
+    <hr class="footer__rule footer__rule--short">
+
+    <div class="footer__contacts">
+      <div><span>Бронирование</span><b><a href="tel:+79617100111">8-961-710-0111</a></b></div>
+      <div><span>Ресторан «Тепло»</span><b><a href="tel:+79609352828">8-960-935-2828</a></b></div>
+      <div><span>Баня / Банный чан</span><b><a href="tel:+79234707000">8-923-470-7000</a></b></div>
+      <div><span>По всем вопросам</span><b><a href="mailto:info@gubernskaya-hotel.ru">info@gubernskaya-hotel.ru</a></b></div>
+      <div><span>Адрес</span><a href="https://yandex.ru/maps/-/CPgfBIot" target="_blank" rel="noopener">Кемеровская область, Горнолыжный курорт Шерегеш<br>Гора Зеленая, ул. Снежная, 27</a></div>
+    </div>
+
+    <p class="footer__holding">
+      Уют-отель «Губернский» входит в состав группы компаний «ЛФ Холдинг»
+      <img src="https://static.tildacdn.com/tild3464-6333-4261-a431-326433373331/Logo_LF.png" alt="ЛФ Холдинг" loading="lazy" width="47" height="47">
+    </p>
+
+    <hr class="footer__rule">
+
+    <div class="footer__brandline">
+      <a class="footer__logo" href="/" aria-label="Уют-отель «Губернский» — на главную">
+        <img src="https://static.tildacdn.com/tild3665-3338-4731-a666-653633393137/Logo_horizont.svg" alt="Уют-отель «Губернский»" loading="lazy" width="234" height="60">
+      </a>
+      <div class="footer__socials">
+        <a href="https://vk.com/gubernskay" target="_blank" rel="noopener" aria-label="ВКонтакте"><img src="https://static.tildacdn.com/tild6634-3065-4364-a337-373330323431/vk.svg" alt="" loading="lazy" width="36" height="36"></a>
+        <a href="https://t.me/gubernskaia" target="_blank" rel="noopener" aria-label="Telegram"><img src="https://static.tildacdn.com/tild6231-6534-4865-a539-656131643235/tg.svg" alt="" loading="lazy" width="36" height="36"></a>
+        <a href="https://max.ru/join/uRw5rxQ07Mmtpc7dlNNerDRowD4aH4i-rcrMEYH1voQ" target="_blank" rel="noopener" aria-label="MAX"><img src="https://static.tildacdn.com/tild3536-3130-4465-a331-633065373130/max_white.svg" alt="" loading="lazy" width="36" height="36"></a>
+        <a href="https://dzen.ru/gubernskaia_sheregesh" target="_blank" rel="noopener" aria-label="Дзен"><img src="https://static.tildacdn.com/tild3038-6430-4436-a235-333265663562/Dzen.png" alt="" loading="lazy" width="36" height="36"></a>
+        <a href="https://rutube.ru/channel/69816886/" target="_blank" rel="noopener" aria-label="RUTUBE"><img src="https://static.tildacdn.com/tild3836-3736-4331-a637-316535656235/rut.svg" alt="" loading="lazy" width="36" height="36"></a>
       </div>
-      <div>
-        <h4>Телефоны</h4>
-        <ul>
-          <li><a href="tel:+79617100111">8-961-710-0111</a> — бронирование</li>
-          <li><a href="tel:+79234707000">8-923-470-7000</a> — СПА, баня, банный чан</li>
-          <li><a href="tel:+79609352828">8-960-935-2828</a> — ресторан «Тепло»</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Разделы</h4>
-        <ul>
-          <li><a href="/spa/">СПА-комплекс</a></li>
-          <li><a href="/banya/">Баня и банный чан</a></li>
-          <li><a href="/children/">Отдых с детьми</a></li>
-          <li><a href="/activity/summer/">Лето в Шерегеше</a></li>
-          <li><a href="/price/">Прайс-лист</a></li>
-        </ul>
+      <div class="footer__ratings">
+        <span>101Hotels.com</span>
+        <img src="https://static.tildacdn.com/tild3434-6431-4666-a665-646330366665/2gis.png" alt="Оценка отеля в 2ГИС" loading="lazy" width="71" height="30">
+        <img src="https://static.tildacdn.com/tild6165-3464-4364-b334-386431316462/yandex.png" alt="Оценка отеля в Яндексе" loading="lazy" width="71" height="30">
       </div>
     </div>
+
     <div class="footer__legal">
-      <span>Официальный сайт ООО «Губерния». ИНН 4217147207</span>
-      <span>
-        <a href="/policies/">Правила проживания</a> ·
-        <a href="/public-offer/">Публичная оферта</a> ·
+      <span>Официальный сайт ООО «Губерния»</span>
+      <span>ИНН 4217147207</span>
+      <span class="footer__legal-links">
         <a href="/privacy-policy/">Политика конфиденциальности</a>
+        <a href="/privacy-agreement/">Пользовательское соглашение</a>
+        <a href="/public-offer/">Публичная оферта</a>
+        <a href="/policies/">Правила проживания</a>
       </span>
+      <a class="footer__up" href="#start" aria-label="Наверх">
+        <img src="https://static.tildacdn.com/tild3135-3264-4337-a536-663833356335/arrow_white.svg" alt="" loading="lazy" width="14" height="14">
+      </a>
     </div>
+
   </div>
 </footer>
 
@@ -722,6 +877,22 @@ tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
     img.parentElement.addEventListener('click', open);
     img.parentElement.addEventListener('keydown', function(e){
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    });
+  });
+
+  // Переключение сезона на карте территории
+  document.querySelectorAll('.mapswitch__btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var season = btn.dataset.season;
+      document.querySelectorAll('.mapswitch__btn').forEach(function(b){
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+      document.querySelectorAll('.map__img').forEach(function(img){
+        img.hidden = img.id !== 'map-' + season;
+      });
+      document.querySelectorAll('.map__layer').forEach(function(l){
+        l.hidden = l.dataset.layer !== season;
+      });
     });
   });
 
