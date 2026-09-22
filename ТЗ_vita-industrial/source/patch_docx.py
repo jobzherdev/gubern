@@ -38,6 +38,18 @@ for par in doc.paragraphs:
     if 'Смотреть цены и планировки' in par.text and 'блок 13' in par.text:
         set_text(par, par.text.replace('блок 13','блок 12')); changed.append('anchor 13->12')
 
+# блок 11: убираем жаргон «пищёвка»
+for tbl in doc.tables:
+    for row in tbl.rows:
+        c=row.cells[0]
+        if 'пищёвка' in c.text:
+            set_text(c.paragraphs[0], 'Пищевое производство')
+            set_text(row.cells[1].paragraphs[0],
+                'Газовое отопление, вода из скважины, зонирование под санитарные требования, '
+                'отдельный вход для персонала и зона приёмки сырья. Подходит и для контрактного '
+                'производства продуктов питания.')
+            changed.append('block 11 wording')
+
 # легенда: убираем строку про скрытые блоки
 legend=doc.tables[-1]
 for row in list(legend.rows):
