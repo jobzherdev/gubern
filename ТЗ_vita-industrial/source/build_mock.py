@@ -69,6 +69,9 @@ tr:nth-child(even) td{background:#fafbfc}
 .gp div.free{background:#e6f0e6;border-color:#a9c7a9;color:#3c6b3c}
 .gp div.sold{background:#f1e6e6;border-color:#cba9a9;color:#8a4a4a}
 /* accordion */
+.acc2col{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+.acc2left h2{font-size:30px}
+.acc2left p{font-size:13.5px;color:#555}
 .acc{border:1px solid #e5eaef;margin-bottom:10px;padding:18px 22px}
 .acc.first{background:#012d66;color:#fff;border-color:#012d66}
 .acc .ttl{font-size:16px;margin-bottom:8px;display:block}
@@ -172,10 +175,10 @@ def render(b):
         o.append(f'<p class="lead">{esc(d["lead"])}</p>')
         o.append('<div class="tabs"><span class="tab on">500 м²</span><span class="tab">750 м²</span><span class="tab">1000 м²</span><span class="tab">1500 м²</span><span class="tab">Объединённый блок</span></div>')
         o.append('<div class="cards2">')
-        for t,tg,txt,p1,p2 in d["items"]:
+        for t,tg,txt,p1 in d["items"]:
             o.append('<div class="card">'+ph("План помещения: цех, офис на втором этаже, ворота")+
                      f'<h3>{esc(t)}<span class="tag">{tg}</span></h3><p style="font-size:13px">{esc(txt)}</p>'
-                     f'<div class="pr"><span><i>Покупка</i>{esc(p1)}</span><span><i>Аренда</i>{esc(p2)}</span></div>'
+                     f'<div class="pr"><span><i>Стоимость покупки</i>{esc(p1)}</span></div>'
                      '<span class="btn">Получить консультацию</span> <span class="btn ghost">Скачать планировку PDF</span></div>')
         o.append('</div>')
         o.append(f'<p class="small" style="margin-top:16px">{esc(d["note"])}</p>')
@@ -192,10 +195,13 @@ def render(b):
         o.append(f'<p class="small">{esc(d)} Зелёный — свободно, серо-красный — продано. Статус обновляется еженедельно, дата обновления выводится под схемой.</p>')
         o.append('</div></section>'); return ''.join(o)
     if L=="accordion":
-        o.append('<section>'+lab(b)+'<div class="wrap"><div class="eyebrow">О наших цехах</div>'+head(b))
+        ld=b.get("lead",{})
+        o.append('<section>'+lab(b)+'<div class="wrap"><div class="acc2col"><div class="acc2left">'
+                 f'<div class="eyebrow">{esc(ld.get("eyebrow","О наших цехах"))}</div>'+head(b)+
+                 f'<p>{esc(ld.get("text",""))}</p><span class="btn" style="margin-top:12px">{esc(ld.get("btn","Получить консультацию"))}</span></div><div>')
         for i,(t,x) in enumerate(d):
             o.append(f'<div class="acc{" first" if i==0 else ""}"><span class="ttl">{esc(t)}</span><p>{esc(x)}</p></div>')
-        o.append('</div></section>'); return ''.join(o)
+        o.append('</div></div></div></section>'); return ''.join(o)
     if L=="location":
         o.append('<section>'+lab(b)+'<div class="wrap"><div class="eyebrow">Локация</div>'+head(b))
         o.append('<div class="loc"><div>'+''.join(f'<span class="pin">{esc(p)}</span>' for p in d["points"])+'</div>'
@@ -217,7 +223,7 @@ def render(b):
         o.append('</div></section>'); return ''.join(o)
     if L=="pricetable":
         o.append('<section style="background:#f8f9fb">'+lab(b)+'<div class="wrap"><div class="eyebrow">Цены</div>'+head(b))
-        o.append('<table><tr><th>Помещение</th><th>Общая площадь</th><th>Цена за м²</th><th>Стоимость покупки</th><th>Аренда</th></tr>'+
+        o.append('<table><tr><th>Помещение</th><th>Общая площадь</th><th>Цена за м²</th><th>Стоимость покупки</th></tr>'+
                  ''.join('<tr>'+''.join(f'<td>{esc(c)}</td>' for c in r)+'</tr>' for r in d["rows"])+'</table>')
         o.append('<p class="small" style="margin:10px 0 22px">Прайс актуален на [дата]. Кнопка «Скачать прайс PDF».</p>')
         o.append('<div style="columns:2;column-gap:40px">'+''.join(f'<p>{esc(p)}</p>' for p in d["paras"])+'</div>')
