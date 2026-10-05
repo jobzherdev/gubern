@@ -225,7 +225,7 @@ def render(b):
         o.append('<section style="background:#f8f9fb">'+lab(b)+'<div class="wrap"><div class="eyebrow">Цены</div>'+head(b))
         o.append('<table><tr><th>Помещение</th><th>Общая площадь</th><th>Цена за м²</th><th>Стоимость покупки</th></tr>'+
                  ''.join('<tr>'+''.join(f'<td>{esc(c)}</td>' for c in r)+'</tr>' for r in d["rows"])+'</table>')
-        o.append('<p class="small" style="margin:10px 0 22px">Прайс актуален на [дата]. Кнопка «Скачать прайс PDF».</p>')
+        o.append('<p class="small" style="margin:10px 0 22px">Цена указана за квадратный метр общей площади помещения. Кнопка «Скачать прайс PDF».</p>')
         o.append('<div style="columns:2;column-gap:40px">'+''.join(f'<p>{esc(p)}</p>' for p in d["paras"])+'</div>')
         o.append('<h3 style="margin-top:26px">Условия оплаты<span class="tag">H3</span></h3>')
         o.append('<div class="cards2" style="grid-template-columns:repeat(4,1fr)">'+
