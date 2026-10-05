@@ -1,0 +1,45 @@
+<!-- ВСТАВИТЬ ОДИН РАЗ: Настройки страницы → Дополнительно → HTML-код внутри HEAD.
+     Общие стили для всех блоков /workshops. Шрифты Oswald и Manrope проект уже грузит. -->
+<style>
+.vi{font-family:'Manrope',Arial,sans-serif;color:#111;font-size:16px;line-height:1.55;
+    max-width:1240px;margin:0 auto;padding:0 20px;box-sizing:border-box}
+.vi *{box-sizing:border-box}
+.vi h2,.vi h3,.vi .vi-ttl{font-family:'Oswald',Arial,sans-serif;font-weight:500;text-transform:uppercase;color:#111;margin:0 0 14px}
+.vi h2{font-size:34px;line-height:1.15}
+.vi h3{font-size:20px;line-height:1.2;margin-bottom:8px}
+.vi p{margin:0 0 12px;color:#333}
+.vi-eyebrow{font-size:13px;font-weight:700;color:#012d66;margin-bottom:12px;letter-spacing:.3px}
+.vi-eyebrow:before{content:'';display:inline-block;width:6px;height:6px;background:#012d66;margin-right:8px;vertical-align:middle}
+.vi-lead{color:#555;max-width:820px;margin-bottom:26px}
+.vi-btn{display:inline-block;background:#012d66;color:#fff!important;padding:14px 28px;font-size:14px;
+    font-weight:600;text-decoration:none;border:1px solid #012d66}
+.vi-btn--ghost{background:transparent;color:#012d66!important}
+.vi-btn--white{background:#fff;color:#012d66!important;border-color:#fff}
+.vi-note{font-size:13px;color:#777;margin-top:12px}
+.vi-table{width:100%;border-collapse:collapse;font-size:15px}
+.vi-table th,.vi-table td{border:1px solid #e1e6ec;padding:13px 15px;text-align:left;vertical-align:top}
+.vi-table th{background:#012d66;color:#fff;font-weight:600;font-size:14px}
+.vi-table tr:nth-child(even) td{background:#fafbfc}
+.vi-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.vi-grid-2--text{grid-template-columns:1.15fr .85fr}
+.vi-grid-2--docs{grid-template-columns:1.2fr .8fr}
+.vi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vi-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.vi-grid-6{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.vi-card{background:#f5f7f9;border-left:3px solid #012d66;padding:22px}
+.vi-card .vi-ttl{font-size:17px;display:block;margin-bottom:8px}
+.vi-card p{font-size:14.5px;margin:0}
+.vi-sect{padding:56px 0}
+.vi-sect--grey{background:#f8f9fb}
+.vi-cta{background:#0b2b1f;color:#fff;padding:28px 0}
+.vi-cta .vi{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.vi-cta .vi-ttl{color:#fff;font-size:22px;margin:0}
+@media screen and (max-width:960px){
+  .vi h2{font-size:26px}
+  .vi-grid-2,.vi-grid-2--text,.vi-grid-2--docs,.vi-grid-3,.vi-grid-4{grid-template-columns:1fr}
+  .vi-grid-6{grid-template-columns:1fr 1fr}
+  .vi-sect{padding:38px 0}
+  .vi-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .vi-table{min-width:560px}
+}
+</style>
