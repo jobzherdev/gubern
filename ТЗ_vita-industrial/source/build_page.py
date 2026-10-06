@@ -1,218 +1,182 @@
 # -*- coding: utf-8 -*-
-"""Собирает всю страницу /workshops одним блоком T123 — по образцу /warehouses."""
+"""Страница /workshops одним блоком T123 — на CSS и приёмах готовой страницы /warehouses."""
 import sys, os, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import content as C
 
 e = html.escape
 B = {b['n']: b for b in C.BLOCKS}
+HERE = os.path.dirname(os.path.abspath(__file__))
+CSS = open(os.path.join(HERE, 'ref_css.txt'), encoding='utf8').read().strip()
 
-IMG = dict(
-    hero="https://static.tildacdn.com/tild6635-3766-4431-b032-653035343361/blob.webp",        # фасад Г6, панорама
-    facade="https://static.tildacdn.com/tild3163-3132-4263-b837-386431373236/blob.webp",      # ворота крупно
+I = dict(
+    hero="https://static.tildacdn.com/tild6635-3766-4431-b032-653035343361/blob.webp",
+    heroMob="https://static.tildacdn.com/tild3163-3132-4263-b837-386431373236/blob.webp",
+    facade="https://static.tildacdn.com/tild3163-3132-4263-b837-386431373236/blob.webp",
     truck="https://static.tildacdn.com/tild3362-3064-4662-b561-333738353733/photo_2026-08-30_18-.jpg",
-    gates="https://static.tildacdn.com/tild3766-6535-4239-a139-336364316338/blob.webp",       # корпус Д6/Д7
-    aerial="https://static.tildacdn.com/tild3865-6265-4234-a461-636531353731/blob.webp",      # вид сверху
+    gates="https://static.tildacdn.com/tild3766-6535-4239-a139-336364316338/blob.webp",
+    aerial="https://static.tildacdn.com/tild3865-6265-4234-a461-636531353731/blob.webp",
     genplan="https://static.tildacdn.com/tild3338-6139-4135-b438-653263313631/0020_1.jpg",
-    plan500="https://static.tildacdn.com/tild3465-3637-4735-b261-393234383766/blob.webp",
-    plan750="https://static.tildacdn.com/tild3331-3333-4230-b763-376338653061/image_20.png",
-    plan1000="https://static.tildacdn.com/tild6563-6539-4033-b830-636564636430/image_21.png",
-    plan1500="https://static.tildacdn.com/tild6539-3836-4432-b139-663131373538/image_22.png",
-    s2000="https://static.tildacdn.com/tild3161-6233-4933-b935-326363313134/Frame_892.png",
-    s3000="https://static.tildacdn.com/tild3565-3738-4761-b965-656633383531/Frame_893.png",
-    s7000="https://static.tildacdn.com/tild6137-6239-4666-a633-653466353432/Frame_894.png",
-    s10000="https://static.tildacdn.com/tild3464-3961-4631-b465-656332383533/Frame_895.png",
+    p500="https://static.tildacdn.com/tild3465-3637-4735-b261-393234383766/blob.webp",
+    p750="https://static.tildacdn.com/tild3331-3333-4230-b763-376338653061/image_20.png",
+    p1000="https://static.tildacdn.com/tild6563-6539-4033-b830-636564636430/image_21.png",
+    p1500="https://static.tildacdn.com/tild6539-3836-4432-b139-663131373538/image_22.png",
+    c2000="https://static.tildacdn.com/tild3161-6233-4933-b935-326363313134/Frame_892.png",
+    c3000="https://static.tildacdn.com/tild3565-3738-4761-b965-656633383531/Frame_893.png",
+    c7000="https://static.tildacdn.com/tild6137-6239-4666-a633-653466353432/Frame_894.png",
+    c10000="https://static.tildacdn.com/tild3464-3961-4631-b465-656332383533/Frame_895.png",
 )
-POPUP = "#zeropopup"
+POP = "#zeropopup"
+PLANS = [
+    ("500",  "436,11 м²", "75,65 м²",  "511,75 м²",  "15 × 32 м", "от 53,7 млн ₽",  I['p500'],
+     "Подходит под небольшое сборочное или пищевое производство, мастерскую, участок с ЧПУ."),
+    ("750",  "637,56 м²", "89,15 м²",  "726,72 м²",  "18 × 38 м", "от 76,3 млн ₽",  I['p750'],
+     "Самый востребованный формат: производственная линия, зона упаковки и склад в одном блоке."),
+    ("1000", "836,02 м²", "118,92 м²", "954,94 м²",  "24 × 38 м", "от 100,3 млн ₽", I['p1000'],
+     "Место под станочный парк, кран-балку и отдельную зону контроля качества."),
+    ("1500", "1274,09 м²","178,56 м²", "1452,65 м²", "36 × 38 м", "от 152,5 млн ₽", I['p1500'],
+     "Полноценное производство с участком отгрузки и складом на одной площадке."),
+]
 
-CSS = """<style>
-.vi{font-family:'Manrope',Arial,sans-serif;color:#111;font-size:16px;line-height:1.55;max-width:1240px;margin:0 auto;padding:0 20px;box-sizing:border-box}
-.vi *{box-sizing:border-box}
-.vi h2,.vi h3,.vi .vi-ttl{font-family:'Oswald',Arial,sans-serif;font-weight:500;color:#111;margin:0 0 14px}
-.vi h2{font-size:34px;line-height:1.15;text-transform:uppercase}
-.vi h3{font-size:21px;line-height:1.2;margin:26px 0 10px}
-.vi p{margin:0 0 12px;color:#333}
-.vi a{color:#012d66}
-.vi-eyebrow{font-size:13px;font-weight:700;color:#012d66;margin-bottom:12px;letter-spacing:.3px}
-.vi-eyebrow:before{content:'';display:inline-block;width:6px;height:6px;background:#012d66;margin-right:8px;vertical-align:middle}
-.vi-btn{display:inline-block;background:#012d66;color:#fff!important;padding:14px 28px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid #012d66;margin:4px 10px 4px 0}
-.vi-btn--ghost{background:transparent;color:#012d66!important}
-.vi-btn--white{background:#fff;color:#012d66!important;border-color:#fff}
-.vi-note{font-size:13.5px;color:#666;margin-top:12px}
-.vi-table{width:100%;border-collapse:collapse;font-size:15px}
-.vi-table th,.vi-table td{border:1px solid #e1e6ec;padding:12px 15px;text-align:left;vertical-align:top}
-.vi-table th{background:#012d66;color:#fff;font-weight:600;font-size:14px}
-.vi-table tr:nth-child(even) td{background:#fafbfc}
-.vi-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.vi-grid-2--text{grid-template-columns:1.1fr .9fr;align-items:start}
-.vi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.vi-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.vi-card{background:#f5f7f9;border-left:3px solid #012d66;padding:22px}
-.vi-card .vi-ttl{font-size:17px;display:block;margin-bottom:8px}
-.vi-card p{font-size:14.5px;margin:0}
-.vi-sect{padding:56px 0}
-.vi-sect--grey{background:#f8f9fb}
-.vi-cta{background:#0b2b1f;color:#fff;padding:28px 0}
-.vi-cta .vi{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.vi-cta .vi-ttl{color:#fff;font-size:22px;margin:0}
-.vi-top img{width:100%;height:auto;display:block}
-.vi-hero{background:#012d66;color:#fff;padding:30px 0 34px}
-.vi-hero .vi,.vi-hero .vi-price,.vi-hero .vi-pill b{color:#fff}
-.vi-hero h1{font-family:'Oswald',Arial,sans-serif;font-weight:500;font-size:40px;line-height:1.12;text-transform:uppercase;margin:0 0 14px;color:#fff}
-.vi-hero p{color:#fff;opacity:.92;font-size:18px;max-width:880px}
-.vi-price{display:inline-block;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);padding:10px 18px;font-family:'Oswald',Arial,sans-serif;font-size:19px;margin:4px 0 16px}
-.vi-pills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
-.vi-pill{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);padding:14px 16px}
-.vi-pill b{display:block;font-family:'Oswald',Arial,sans-serif;font-size:20px;font-weight:500;margin-bottom:4px}
-.vi-pill span{font-size:13.5px;opacity:.85}
-.vi-crumbs{font-size:13px;color:#666;padding:12px 0}
-.vi-crumbs a{color:#666;text-decoration:none}
-.vi-plan{border:1px solid #e5eaef;background:#fff;padding:0 0 22px}
-.vi-plan img{width:100%;height:auto;display:block;background:#f5f7f9}
-.vi-plan .in{padding:0 22px}
-.vi-plan .pr{font-family:'Oswald',Arial,sans-serif;font-size:19px;color:#012d66;margin:10px 0 14px}
-.vi-steps{counter-reset:s;margin:0;padding:0;list-style:none}
-.vi-steps li{display:grid;grid-template-columns:44px 1fr 220px;gap:16px;padding:16px 0;border-bottom:1px solid #e5eaef}
-.vi-steps .n{font-family:'Oswald',Arial,sans-serif;font-size:26px;color:#012d66}
-.vi-steps b{display:block;font-size:16px;margin-bottom:4px}
-.vi-steps p{margin:0;font-size:15px}
-.vi-steps .r{font-size:14px;color:#012d66;font-weight:600}
-.vi-map{position:relative;background:#eef2f6;min-height:340px}
-.vi-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vi-pin{background:#012d66;color:#fff;font-size:14px;padding:11px 16px;margin-bottom:9px;display:block}
-.vi-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.vi-gal img{width:100%;height:220px;object-fit:cover;display:block}
-.vi-docs li{font-size:15px;color:#333;margin-bottom:11px;padding-left:18px;position:relative;list-style:none}
-.vi-docs li:before{content:'';position:absolute;left:0;top:8px;width:7px;height:7px;background:#012d66}
-.vi-q{border-bottom:1px solid #e5eaef;padding:4px 0}
-.vi-q summary{list-style:none;cursor:pointer;padding:16px 36px 16px 0;position:relative;font-weight:700;font-size:16.5px;color:#111}
-.vi-q summary::-webkit-details-marker{display:none}
-.vi-q summary:after{content:'+';position:absolute;right:6px;top:13px;font-size:22px;color:#012d66;font-weight:400}
-.vi-q[open] summary:after{content:'\\2212'}
-.vi-q .vi-a{padding:0 36px 16px 0}
-.vi-q .vi-a p{margin:0;font-size:15px}
-.vi-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.vi-links a{display:block;border:1px solid #d8dee6;background:#fff;padding:14px 16px;text-decoration:none;font-size:15px}
-.vi-links small{display:block;color:#777;margin-top:4px;font-size:13px}
-@media screen and (max-width:960px){
-  .vi h2{font-size:26px}
-  .vi-hero h1{font-size:28px}
-  .vi-grid-2,.vi-grid-2--text,.vi-grid-3,.vi-grid-4,.vi-pills,.vi-links{grid-template-columns:1fr}
-  .vi-gal{grid-template-columns:1fr 1fr}
-  .vi-sect{padding:38px 0}
-  .vi-steps li{grid-template-columns:34px 1fr}
-  .vi-steps .r{grid-column:2}
-  .vi-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .vi-scroll .vi-table{min-width:580px}
-}
-</style>"""
-
-O=[]
-A=O.append
-
+O=[]; A=O.append
 A("""<!-- /workshops: всё наполнение страницы одним блоком T123. Собрано по ТЗ.
-     Все кнопки заявки открывают окно #zeropopup (форма «Закажите обратный звонок»), оно уже есть на странице.
-     Изображения — файлы, уже загруженные в этот проект Tilda. -->""")
-A(CSS)
+     Оформление и приёмы — как на странице /warehouses.
+     Все кнопки заявки открывают окно #zeropopup (форма «Закажите обратный звонок»), оно уже есть на странице. -->""")
+A("<style>\n"+CSS+"""
+.vi-stats>div b{display:block;margin-bottom:4px;line-height:1.1}
+.vi-stats>div span{display:block;line-height:1.35}
+.vi-geo td:first-child{width:46%}
+@media screen and (max-width:960px){.vi-geo{min-width:0}.vi-geo td,.vi-geo th{padding:10px 12px;font-size:14px}}
+.vi-map .vi-btn{position:relative;z-index:1}
+"""+"\n</style>")
 
-# ---------- 2. Первый экран ----------
-hero=B[2]['data']
+# ---------- первый экран ----------
+h=B[2]['data']
 A(f"""
 <div class="vi-top">
 <picture>
-  <source media="(max-width:640px)" srcset="{IMG['facade']}">
-  <img src="{IMG['hero']}" alt="Производственные цеха индустриального парка «Вита» в Шушарах: корпуса с секционными воротами и проездами" fetchpriority="high">
+  <source media="(max-width:640px)" srcset="{I['heroMob']}">
+  <img src="{I['hero']}" alt="Производственные цеха индустриального парка «Вита» в Шушарах: корпуса с секционными воротами и зоной разгрузки" fetchpriority="high">
 </picture>
 <div class="vi-hero">
   <div class="vi">
     <div class="vi-crumbs" style="color:#cfd8e3;padding-top:0"><a href="/" style="color:#cfd8e3">Главная</a> / <span>Производственные помещения</span></div>
-    <h1>{e(hero['h1'])}</h1>
-    <p>{e(hero['sub'])}</p>
-    <div class="vi-price">{e(hero['price'])}</div>
-    <div>
-      <a href="{POPUP}" class="vi-btn vi-btn--white">{e(hero['btns'][0])}</a>
-      <a href="#prices" class="vi-btn vi-btn--ghost" style="color:#fff!important;border-color:rgba(255,255,255,.7)">{e(hero['btns'][1])}</a>
+    <h1>{e(h['h1'])}</h1>
+    <p>{e(h['sub'])}</p>
+    <div class="vi-price">{e(h['price'])}</div>
+    <div class="vi-cta-btns">
+      <a href="{POP}" class="vi-btn vi-btn--white">{e(h['btns'][0])}</a>
+      <a href="#prices" class="vi-btn vi-btn--ghost" style="color:#fff!important;border-color:rgba(255,255,255,.7)">{e(h['btns'][1])}</a>
     </div>
-    <div class="vi-pills">""")
-PILLS = [("36 зданий", "в парке, свободные блоки 500–1500 м²"),
-         ("8 м", "высота до низа конструкций, нагрузка на пол 5 т/м²"),
-         ("Газ, 25 кВт", "вода и септик заведены в каждый блок"),
-         ("7–14 дней", "регистрация права собственности в Росреестре")]
-for b_, s_ in PILLS:
-    A(f'      <div class="vi-pill"><b>{e(b_)}</b><span>{e(s_)}</span></div>')
-A("""    </div>
+    <div class="vi-pills">
+      <div class="vi-pill"><b>36 зданий</b><span>в парке, свободные блоки 500–1500 м²</span></div>
+      <div class="vi-pill"><b>8 м</b><span>высота до низа конструкций, пол 5 т/м²</span></div>
+      <div class="vi-pill"><b>Газ, 25 кВт</b><span>вода и септик заведены в каждый блок</span></div>
+      <div class="vi-pill"><b>7–14 дней</b><span>регистрация права в Росреестре</span></div>
+    </div>
   </div>
 </div>
 </div>""")
 
-# ---------- 3. Парк в цифрах ----------
+# ---------- об объекте + цифры ----------
+d4=B[4]['data']
 A(f"""
 <div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">О парке</div>
-    <h2>{e(B[3]['head'])}</h2>
-    <div class="vi-grid-3">""")
-for num, txt in B[3]['data']:
-    A(f'      <div class="vi-card"><span class="vi-ttl" style="font-size:26px">{e(num)}</span><p>{e(txt)}</p></div>')
+    <h2>{e(B[4]['head'])}</h2>""")
+for p in d4['paras']: A(f'    <p>{e(p)}</p>')
+A('    <div class="vi-stats vi-grid-3" style="margin-top:24px">')
+for num,txt in B[3]['data']:
+    A(f'      <div><b>{e(num)}</b><span>{e(txt)}</span></div>')
 A("""    </div>
   </div>
 </div>""")
 
-# ---------- 4. Вводный SEO-блок ----------
-d=B[4]['data']
+# ---------- что входит в цену ----------
+ld=B[8].get('lead',{})
 A(f"""
-<div class="vi-sect vi-sect--grey">
+<div class="vi-sect">
   <div class="vi">
-    <div class="vi-eyebrow">Об объекте</div>
-    <h2>{e(B[4]['head'])}</h2>
-    <div class="vi-grid-2 vi-grid-2--text">
-      <div>""")
-for p in d['paras']: A(f'        <p>{e(p)}</p>')
-A(f"""      </div>
-      <div><img src="{IMG['facade']}" alt="Производственное помещение в индустриальном парке «Вита», Шушары — секционные ворота цеха и зона разгрузки" loading="lazy" style="width:100%;height:auto;display:block"></div>
-    </div>
-  </div>
-</div>""")
-
-# ---------- 5. Каталог ----------
-cat=B[5]['data']
-PLANS=[(IMG['plan500'],'500'),(IMG['plan750'],'750'),(IMG['plan1000'],'1000'),(IMG['plan1500'],'1500')]
-A(f"""
-<div class="vi-sect" id="plans">
-  <div class="vi">
-    <div class="vi-eyebrow">Планировки</div>
-    <h2>{e(B[5]['head'])}</h2>
-    <p style="max-width:860px">{e(cat['lead'])}</p>
-    <div class="vi-grid-2" style="margin-top:26px">""")
-for (t,_,txt,price),(img,area) in zip(cat['items'],PLANS):
-    A(f"""      <div class="vi-plan">
-        <img src="{img}" alt="План производственного помещения {area} м² в индустриальном парке «Вита», Шушары: цех на первом этаже и офис-мезонин" loading="lazy">
-        <div class="in"><h3>{e(t)}</h3><p>{e(txt)}</p>
-          <div class="pr">{e(price)}</div>
-          <a href="{POPUP}" class="vi-btn">Получить консультацию</a></div>
-      </div>""")
+    <div class="vi-eyebrow">{e(ld.get('eyebrow','О наших цехах'))}</div>
+    <h2>{e(B[8]['head'])}</h2>
+    <p>{e(ld.get('text',''))}</p>
+    <div class="vi-grid-3" style="margin-top:20px">""")
+for t,x in B[8]['data']:
+    A(f'      <div class="vi-card"><span class="vi-ttl">{e(t)}</span><p>{e(x)}</p></div>')
 A(f"""    </div>
-    <h3 style="margin-top:34px">Комплексные решения 2000–10 000 м²</h3>
-    <p style="max-width:860px">{e(cat['note'])}</p>
-    <div class="vi-grid-4" style="margin-top:18px">
-      <div><img src="{IMG['s2000']}" alt="Схема комплексного производственного решения 2000 м²" loading="lazy" style="width:100%;height:auto"><p class="vi-note">2000 м²</p></div>
-      <div><img src="{IMG['s3000']}" alt="Схема комплексного производственного решения 3000 м²" loading="lazy" style="width:100%;height:auto"><p class="vi-note">3000 м²</p></div>
-      <div><img src="{IMG['s7000']}" alt="Схема комплексного производственного решения 7000 м²" loading="lazy" style="width:100%;height:auto"><p class="vi-note">7000 м²</p></div>
-      <div><img src="{IMG['s10000']}" alt="Схема комплексного производственного решения 10 000 м²" loading="lazy" style="width:100%;height:auto"><p class="vi-note">10 000 м²</p></div>
+    <p style="margin-top:20px"><a href="{POP}" class="vi-btn">{e(ld.get('btn','Получить консультацию'))}</a></p>
+  </div>
+</div>""")
+
+# ---------- планировки и цены (табы) ----------
+c5=B[5]['data']
+A(f"""
+<div class="vi-sect" id="prices">
+  <div class="vi">
+    <div class="vi-eyebrow">Планировки и цены</div>
+    <h2>Планировки и цены: производственные помещения 500, 750, 1000 и 1500 м²</h2>
+    <div class="vi-scroll"><table class="vi-table">
+      <tr><th>Блок</th><th>Цех, 1 этаж</th><th>Офис, 2 этаж</th><th>Суммарно</th><th>Габариты</th><th>Цена объекта</th></tr>""")
+for a_,ceh,off,tot,gab,price,_,_ in PLANS:
+    A(f'      <tr><td>{a_} м²</td><td>{ceh}</td><td>{off}</td><td>{tot}</td><td>{gab}</td><td><b>{price}</b></td></tr>')
+A(f"""    </table></div>
+    <p style="margin-top:16px">{e(c5['lead'])}</p>
+    <p>Цена рассчитывается от суммарной площади помещения вместе с офисно-бытовой частью. Стоимость конкретного блока и порядок оплаты менеджер проекта подтверждает при обращении.</p>
+    <div class="vi-tabs">
+      <input type="radio" name="vi-plan" id="vi-t500" checked><input type="radio" name="vi-plan" id="vi-t750"><input type="radio" name="vi-plan" id="vi-t1000"><input type="radio" name="vi-plan" id="vi-t1500"><input type="radio" name="vi-plan" id="vi-tcombo">
+      <div class="vi-tablabels">
+        <label for="vi-t500">500 м²</label><label for="vi-t750">750 м²</label><label for="vi-t1000">1000 м²</label><label for="vi-t1500">1500 м²</label><label for="vi-tcombo">2000–10 000 м²</label>
+      </div>
+      <div class="vi-panels">""")
+for a_,ceh,off,tot,gab,price,img,note in PLANS:
+    A(f"""      <div class="vi-panel vi-p{a_}">
+        <div>
+          <h3>Производственный цех {a_} м² с офисом-мезонином {off.replace(' м²','')} м²</h3>
+          <table class="vi-table">
+            <tr><td>Цех, 1 этаж</td><td>{ceh}</td></tr>
+            <tr><td>Офис, 2 этаж</td><td>{off}</td></tr>
+            <tr><td>Суммарная площадь</td><td>{tot}</td></tr>
+            <tr><td>Габариты в осях</td><td>{gab}</td></tr>
+            <tr><td><b>Цена объекта</b></td><td><b>{price}</b></td></tr>
+          </table>
+          <p style="font-size:14.5px">{e(note)}</p>
+          <ul><li>Возможность установки кран-балки грузоподъёмностью до 5 т</li><li>Технические изменения объекта под ваш запрос</li></ul>
+          <a href="{POP}" class="vi-btn">Рассчитать стоимость</a>
+          <a href="#genplan-map" class="vi-btn vi-btn--ghost">Смотреть генплан</a>
+        </div>
+        <img src="{img}" alt="План производственного помещения {a_} м²: цех {ceh} на первом этаже, офис-мезонин {off} на втором" loading="lazy">
+      </div>""")
+A(f"""      <div class="vi-panel vi-pcombo">
+        <div>
+          <h3>Комплексные решения 2000–10 000 м²</h3>
+          <p style="font-size:14.5px">{e(c5['note'])}</p>
+          <ul><li>Объединяем смежные блоки в один контур с общей зоной отгрузки</li><li>Изменения вносим в проект до начала отделки</li></ul>
+          <a href="{POP}" class="vi-btn">Обсудить проект</a>
+        </div>
+        <div class="vi-combo">
+          <figure><img src="{I['c2000']}" alt="Схема комплексного производственного решения 2000 м²" loading="lazy"><figcaption>2000 м²</figcaption></figure>
+          <figure><img src="{I['c3000']}" alt="Схема комплексного производственного решения 3000 м²" loading="lazy"><figcaption>3000 м²</figcaption></figure>
+          <figure><img src="{I['c7000']}" alt="Схема комплексного производственного решения 7000 м²" loading="lazy"><figcaption>7000 м²</figcaption></figure>
+          <figure><img src="{I['c10000']}" alt="Схема комплексного производственного решения 10 000 м²" loading="lazy"><figcaption>10 000 м²</figcaption></figure>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>""")
 
-def cta(text):
+def cta(text, btn="Оставить заявку"):
     A(f"""
 <div class="vi-cta">
-  <div class="vi"><span class="vi-ttl">{e(text)}</span><a href="{POPUP}" class="vi-btn vi-btn--white">Оставить заявку</a></div>
+  <div class="vi"><span class="vi-ttl">{e(text)}</span>
+    <span class="vi-cta-btns"><a href="{POP}" class="vi-btn vi-btn--white">{e(btn)}</a></span></div>
 </div>""")
 cta(C.CTA_AFTER[5])
 
-# ---------- 6. Технические характеристики ----------
+# ---------- технические характеристики ----------
 A(f"""
-<div class="vi-sect vi-sect--grey">
+<div class="vi-sect" id="characteristics">
   <div class="vi">
     <div class="vi-eyebrow">Характеристики</div>
     <h2>{e(B[6]['head'])}</h2>
@@ -223,70 +187,65 @@ A("""    </table></div>
   </div>
 </div>""")
 
-# ---------- 7. Генплан ----------
+# ---------- генплан ----------
 A(f"""
 <div class="vi-sect" id="genplan-map">
   <div class="vi">
     <div class="vi-eyebrow">Генеральный план</div>
     <h2>{e(B[7]['head'])}</h2>
-    <img src="{IMG['genplan']}" alt="Генеральный план индустриального парка «Вита» в Шушарах: 36 зданий, внутренние проезды и выезд на Московское шоссе" loading="lazy" style="width:100%;height:auto;display:block">
+    <img src="{I['genplan']}" alt="Генеральный план индустриального парка «Вита» в Шушарах: 36 зданий, внутренние проезды и выезд на Московское шоссе" loading="lazy" style="width:100%;height:auto;display:block;border:1px solid #dfe5ec">
     <p class="vi-note">На схеме — 36 зданий парка с внутренними проездами и зонами разгрузки. Свободные производственные помещения и их площади менеджер показывает на актуальной версии плана: статус свободных блоков обновляется еженедельно.</p>
-    <p><a href="{POPUP}" class="vi-btn">Узнать свободные помещения</a></p>
+    <p><a href="{POP}" class="vi-btn">Узнать свободные помещения</a></p>
   </div>
 </div>""")
 
-# ---------- 8. Что входит в цену ----------
-ld=B[8].get('lead',{})
-A(f"""
-<div class="vi-sect vi-sect--grey">
-  <div class="vi">
-    <div class="vi-eyebrow">{e(ld.get('eyebrow','О наших цехах'))}</div>
-    <h2>{e(B[8]['head'])}</h2>
-    <p style="max-width:860px">{e(ld.get('text',''))}</p>
-    <div class="vi-grid-3" style="margin-top:22px">""")
-for t,x in B[8]['data']:
-    A(f'      <div class="vi-card"><span class="vi-ttl">{e(t)}</span><p>{e(x)}</p></div>')
-A(f"""    </div>
-    <p style="margin-top:20px"><a href="{POPUP}" class="vi-btn">{e(ld.get('btn','Получить консультацию'))}</a></p>
-  </div>
-</div>""")
-
-# ---------- 9. Локация ----------
+# ---------- локация ----------
 loc=B[9]['data']
+GEO=[("КАД","6 км"),("Московское шоссе","прямой выезд"),
+     ("Трассы М-10 и М-11","рядом: Москва, Великий Новгород, юг региона"),
+     ("Железнодорожная станция Шушары","рядом"),
+     ("Аэропорт Пулково","20 минут, южное направление"),
+     ("Граница Тосненского района Ленобласти","10 минут")]
+MAPURL="https://yandex.ru/maps/?pt=30.432597,59.772195&z=14&l=map"
+A(f"""
+<div class="vi-sect" id="location">
+  <div class="vi">
+    <div class="vi-eyebrow">Локация</div>
+    <h2>{e(B[9]['head'])}</h2>""")
+for p in loc['paras']: A(f'    <p>{e(p)}</p>')
+A(f"""    <div class="vi-grid-2" style="margin-top:20px">
+      <div class="vi-map" style="display:flex;align-items:center;justify-content:center">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=30.432597%2C59.772195&amp;z=13&amp;pt=30.432597%2C59.772195%2Cpm2rdm" loading="lazy" allowfullscreen title="Индустриальный парк «Вита» на карте: Санкт-Петербург, Пушкинский район, Шушары"></iframe>
+        <a href="{MAPURL}" target="_blank" rel="noopener" class="vi-btn">Показать на карте</a>
+      </div>
+      <div>
+        <table class="vi-table vi-geo">
+          <tr><th>Точка</th><th>Как связан объект</th></tr>""")
+for a_,b_ in GEO: A(f'          <tr><td>{e(a_)}</td><td>{e(b_)}</td></tr>')
+A(f"""        </table>
+        <p class="vi-note">Координаты объекта: 59.772195, 30.432597. <a href="{MAPURL}" target="_blank" rel="noopener">Построить маршрут</a></p>
+      </div>
+    </div>
+  </div>
+</div>""")
+
+# ---------- фотографии ----------
 A(f"""
 <div class="vi-sect">
   <div class="vi">
-    <div class="vi-eyebrow">Локация</div>
-    <h2>{e(B[9]['head'])}</h2>
-    <div class="vi-grid-2">
-      <div>""")
-for p in loc['points']: A(f'        <span class="vi-pin">{e(p)}</span>')
-A("""      </div>
-      <div class="vi-map"><iframe src="https://yandex.ru/map-widget/v1/?ll=30.432597%2C59.772195&amp;z=12&amp;pt=30.432597%2C59.772195%2Cpm2rdm" loading="lazy" allowfullscreen title="Индустриальный парк «Вита» на карте: Санкт-Петербург, Пушкинский район, Шушары"></iframe></div>
-    </div>
-    <div style="margin-top:24px">""")
-for p in loc['paras']: A(f'      <p>{e(p)}</p>')
-A("""    </div>
-  </div>
-</div>""")
-
-# ---------- 10. Фотографии ----------
-A(f"""
-<div class="vi-sect vi-sect--grey">
-  <div class="vi">
     <div class="vi-eyebrow">Фотографии</div>
     <h2>{e(B[10]['head'])}</h2>
-    <div class="vi-gal">
-      <img src="{IMG['facade']}" alt="Производственные помещения парка «Вита», Шушары — фасад корпуса с секционными воротами" loading="lazy">
-      <img src="{IMG['gates']}" alt="Производственный корпус индустриального парка «Вита» — ворота и зона разгрузки у цеха" loading="lazy">
-      <img src="{IMG['aerial']}" alt="Индустриальный парк «Вита» в Шушарах с высоты: корпуса, проезды и парковка" loading="lazy">
-      <img src="{IMG['truck']}" alt="Производственное помещение парка «Вита» — подъезд фуры к воротам цеха" loading="lazy">
+    <div class="vi-grid-4">
+      <img src="{I['facade']}" alt="Производственные помещения парка «Вита», Шушары — фасад корпуса с секционными воротами" loading="lazy" style="width:100%;height:220px;object-fit:cover;display:block">
+      <img src="{I['gates']}" alt="Производственный корпус индустриального парка «Вита» — ворота и зона разгрузки у цеха" loading="lazy" style="width:100%;height:220px;object-fit:cover;display:block">
+      <img src="{I['aerial']}" alt="Индустриальный парк «Вита» в Шушарах с высоты: корпуса, проезды и парковка" loading="lazy" style="width:100%;height:220px;object-fit:cover;display:block">
+      <img src="{I['truck']}" alt="Производственное помещение парка «Вита» — подъезд фуры к воротам цеха" loading="lazy" style="width:100%;height:220px;object-fit:cover;display:block">
     </div>
     <p class="vi-note">Строительство идёт очередями. Актуальные фотографии — в разделе <a href="/progress">«Ход строительства»</a>.</p>
   </div>
 </div>""")
 
-# ---------- 11. Для каких производств ----------
+# ---------- применение ----------
 A(f"""
 <div class="vi-sect">
   <div class="vi">
@@ -299,23 +258,15 @@ A("""    </div>
   </div>
 </div>""")
 
-# ---------- 12. Цены ----------
+# ---------- цены и условия ----------
 pr=B[12]['data']
 A(f"""
-<div class="vi-sect vi-sect--grey" id="prices">
+<div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">Цены</div>
-    <h2>{e(B[12]['head'])}</h2>
-    <div class="vi-scroll"><table class="vi-table">
-      <tr><th>Помещение</th><th>Общая площадь</th><th>Цена за м²</th><th>Стоимость покупки</th></tr>""")
-for r in pr['rows']: A('      <tr>'+''.join(f'<td>{e(c)}</td>' for c in r)+'</tr>')
-A("""    </table></div>
-    <p class="vi-note">Цена указана за квадратный метр общей площади помещения. Точную стоимость выбранного блока менеджер подтверждает при бронировании.</p>
-    <div class="vi-grid-2" style="margin-top:24px">""")
-for p in pr['paras']: A(f'      <p>{e(p)}</p>')
-A("""    </div>
-    <h3>Условия оплаты</h3>
-    <div class="vi-grid-4">""")
+    <h2>{e(B[12]['head'])}</h2>""")
+for p in pr['paras']: A(f'    <p>{e(p)}</p>')
+A('    <h3>Условия оплаты</h3>\n    <div class="vi-grid-4">')
 for t,x in pr['terms']:
     A(f'      <div class="vi-card"><span class="vi-ttl">{e(t)}</span><p>{e(x)}</p></div>')
 A("""    </div>
@@ -323,24 +274,24 @@ A("""    </div>
 </div>""")
 cta(C.CTA_AFTER[12])
 
-# ---------- 13. Купить или арендовать ----------
-cmp_=B[13]['data']
+# ---------- покупка или аренда ----------
+cm=B[13]['data']
 A(f"""
 <div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">Покупка или аренда</div>
     <h2>{e(B[13]['head'])}</h2>
     <div class="vi-scroll"><table class="vi-table">
-      <tr>"""+''.join(f'<th>{e(x)}</th>' for x in cmp_['header'])+"</tr>")
-for r in cmp_['rows']: A('      <tr>'+''.join(f'<td>{e(c)}</td>' for c in r)+'</tr>')
+      <tr>"""+''.join(f'<th>{e(x)}</th>' for x in cm['header'])+"</tr>")
+for r in cm['rows']: A('      <tr>'+''.join(f'<td>{e(c)}</td>' for c in r)+'</tr>')
 A(f"""    </table></div>
-    <p style="margin-top:14px">{e(cmp_['after'])}</p>
+    <p style="margin-top:14px">{e(cm['after'])}</p>
   </div>
 </div>""")
 
-# ---------- 14. Новый или вторичка ----------
+# ---------- новый или вторичка ----------
 A(f"""
-<div class="vi-sect vi-sect--grey">
+<div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">Сравнение</div>
     <h2>{e(B[14]['head'])}</h2>
@@ -351,36 +302,37 @@ A("""    </div>
   </div>
 </div>""")
 
-# ---------- 15. Этапы ----------
-STEP_R=['1 день','в любой будний день','5 рабочих дней','по готовности документов','7–14 рабочих дней','передача по акту']
+# ---------- этапы ----------
+R=['1 день','в любой будний день','5 рабочих дней','по готовности документов','7–14 рабочих дней','передача по акту']
 A(f"""
 <div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">Сделка</div>
     <h2>{e(B[15]['head'])}</h2>
     <ul class="vi-steps">""")
-for i,((t,x),r) in enumerate(zip(B[15]['data'],STEP_R),1):
+for i,((t,x),r) in enumerate(zip(B[15]['data'],R),1):
     A(f'      <li><span class="n">{i}</span><div><b>{e(t)}</b><p>{e(x)}</p></div><span class="r">{e(r)}</span></li>')
 A("""    </ul>
     <p class="vi-note">Средний срок от первого звонка до получения ключей — около трёх недель. Менеджер: <a href="tel:+78125744747">+7 (812) 574-47-47</a>.</p>
   </div>
 </div>""")
 
-# ---------- 16. Документы ----------
+# ---------- документы ----------
 A(f"""
-<div class="vi-sect vi-sect--grey">
+<div class="vi-sect">
   <div class="vi">
     <div class="vi-eyebrow">Документы</div>
     <h2>{e(B[16]['head'])}</h2>
-    <ul class="vi-docs" style="padding:0;margin:0">""")
-for x in B[16]['data']: A(f'      <li>{e(x)}</li>')
+    <ul style="margin:0;padding-left:18px">""")
+for x in B[16]['data']: A(f'      <li style="margin-bottom:10px">{e(x)}</li>')
 A(f"""    </ul>
-    <p style="margin-top:18px">Полный пакет — в разделе <a href="/documentation">«Документация»</a>. <a href="{POPUP}" class="vi-btn" style="margin-left:10px">Запросить документы</a></p>
+    <p style="margin-top:18px">Полный пакет — в разделе <a href="/documentation">«Документация»</a>.</p>
+    <p><a href="{POP}" class="vi-btn">Запросить документы</a></p>
   </div>
 </div>""")
 cta(C.CTA_AFTER[16])
 
-# ---------- 17. FAQ ----------
+# ---------- FAQ ----------
 A(f"""
 <div class="vi-sect">
   <div class="vi">
@@ -392,44 +344,45 @@ for i,(q,a) in enumerate(B[17]['data']):
       <summary>{e(q)}</summary>
       <div class="vi-a"><p>{e(a)}</p></div>
     </details>""")
-A(f"""    <p style="margin-top:24px"><a href="{POPUP}" class="vi-btn">Задать вопрос менеджеру</a></p>
-  </div>
+A("""  </div>
 </div>""")
 
-# ---------- 18. Заявка ----------
+# ---------- заявка ----------
 f18=B[18]['data']
 A(f"""
-<div class="vi-sect vi-sect--grey" id="contacts">
+<div class="vi-sect" id="contacts">
   <div class="vi">
     <div class="vi-eyebrow">Контакты</div>
     <h2>{e(B[18]['head'])}</h2>
     <div class="vi-grid-2">
       <div>
         <p>{e(f18['text'])}</p>
-        <p><a href="{POPUP}" class="vi-btn">Оставить заявку</a>
-           <a href="tel:+78125744747" class="vi-btn vi-btn--ghost">+7 (812) 574-47-47</a></p>
+        <div class="vi-cta-btns" style="margin:14px 0">
+          <a href="{POP}" class="vi-btn">Оставить заявку</a>
+          <a href="tel:+78125744747" class="vi-btn vi-btn--ghost">+7 (812) 574-47-47</a>
+        </div>
         <p class="vi-note">Почта: <a href="mailto:info@isk-vita.ru">info@isk-vita.ru</a>. Объект: Санкт-Петербург, Пушкинский район, Шушары, выезд на Московское шоссе. Офис: площадь Конституции, д. 3а, БЦ «Пирамида», офис 901–914.</p>
       </div>
-      <div><img src="{IMG['aerial']}" alt="Индустриальный парк «Вита» в Шушарах — вид на корпуса и территорию" loading="lazy" style="width:100%;height:auto;display:block"></div>
+      <div><img src="{I['aerial']}" alt="Индустриальный парк «Вита» в Шушарах — вид на корпуса и территорию" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;max-height:320px"></div>
     </div>
   </div>
 </div>""")
 
-# ---------- 19. Текст низа ----------
-tail=B[19]['data']
+# ---------- текст низа ----------
+t19=B[19]['data']
 A(f"""
 <div class="vi-sect">
   <div class="vi">
-    <h2 style="font-size:26px">{e(B[19]['head'])}</h2>""")
-for p in tail['paras']: A(f'    <p style="font-size:15px;color:#555">{e(p)}</p>')
-A('    <div class="vi-links" style="margin-top:18px">')
-for t,u in tail['links']:
+    <div class="vi-eyebrow">Коротко о главном</div>
+    <h2>{e(B[19]['head'])}</h2>""")
+for p in t19['paras']: A(f'    <p>{e(p)}</p>')
+A('    <h3>Другие разделы по объекту</h3>\n    <div class="vi-links">')
+for t,u in t19['links']:
     A(f'      <a href="{u}">{e(t)}<small>{u}</small></a>')
 A("""    </div>
   </div>
 </div>""")
 
-out=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),'deliver2','workshops_одним_блоком_T123.html')
-os.makedirs(os.path.dirname(out),exist_ok=True)
+out=os.path.join(os.path.dirname(HERE),'deliver2','workshops_одним_блоком_T123.html')
 open(out,'w',encoding='utf8').write('\n'.join(O))
 print('готово:',out, round(os.path.getsize(out)/1024,1),'КБ')
